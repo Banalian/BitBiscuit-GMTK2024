@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw05l6nq3tc54"]
 
-[ext_resource type="PackedScene" uid="uid://dix3g564jyxao" path="res://Scenes/ingredient.tscn" id="1_ku2gi"]
+[ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="1_ku2gi"]
 [ext_resource type="Resource" uid="uid://i8hvccfjnr4u" path="res://Resources/water.tres" id="2_ijnft"]
 [ext_resource type="Resource" uid="uid://c13uqju2m5t44" path="res://Resources/sun.tres" id="3_majxs"]
 

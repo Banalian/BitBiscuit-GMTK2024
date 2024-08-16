@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://i8hvccfjnr4u"]
 
 [ext_resource type="Texture2D" uid="uid://vkqg2pxm8leg" path="res://Assets/Textures/Misc/BitBiscuit1x.png" id="1_rixy7"]
-[ext_resource type="Script" path="res://Scripts/System/ingredient_resource.gd" id="1_rpq8t"]
+[ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="1_rpq8t"]
 
 [resource]
 script = ExtResource("1_rpq8t")
