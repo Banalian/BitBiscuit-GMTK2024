@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c13uqju2m5t44"]
+
+[ext_resource type="Script" path="res://Scripts/System/ingredient_resource.gd" id="1_hntgn"]
+[ext_resource type="Texture2D" uid="uid://di6tq8live35o" path="res://Assets/Textures/Misc/BitBiscuit10x.png" id="1_m7fba"]
+
+[resource]
+script = ExtResource("1_hntgn")
+is_base_ingredient = true
+ingredient_name = "Sun"
+ingredient_texture = ExtResource("1_m7fba")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://cv35u5uopwbr3"]
+
+[ext_resource type="Script" path="res://Scripts/System/ingredient_resource.gd" id="1_kuv4f"]
+
+[resource]
+script = ExtResource("1_kuv4f")
+is_base_ingredient = false
+ingredient_name = "Invalid"
