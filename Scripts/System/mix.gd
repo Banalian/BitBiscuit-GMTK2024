@@ -47,9 +47,9 @@ func remove(ingredient : Ingredient):
 
 
 func is_mix_empty():
-	return _content.get_or_add(Constants.IngredientType.CONTAINER, null)\
-	and _content.get_or_add(Constants.IngredientType.BASE, null)\
-	and _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
+	return not _content.get_or_add(Constants.IngredientType.CONTAINER, null)\
+	and not _content.get_or_add(Constants.IngredientType.BASE, null)\
+	and not _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
 
 
 func clear():
