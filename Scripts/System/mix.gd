@@ -45,6 +45,9 @@ func remove(ingredient : Ingredient):
 		_content[ingredient.ingredient_type] = null
 	return remove_ing
 
+func get_ingredient(type : Constants.IngredientType):
+	return _content.get_or_add(type, null)
+
 
 func is_mix_empty():
 	return not _content.get_or_add(Constants.IngredientType.CONTAINER, null)\
