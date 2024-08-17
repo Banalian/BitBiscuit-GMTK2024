@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://b4d11f5dmdks2" path="res://Resources/cup.tres" id="7_he073"]
 [ext_resource type="Resource" uid="uid://b2d4ccmmcd2vl" path="res://Resources/ant.tres" id="8_lx8mu"]
 [ext_resource type="Script" path="res://Scripts/order_generator.gd" id="10_5gpj7"]
-[ext_resource type="Script" path="res://Scripts/mix_displayer.gd" id="11_hm40m"]
+[ext_resource type="PackedScene" uid="uid://dpskv36p3tjfs" path="res://Scenes/mix_displayer.tscn" id="11_2afnp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -79,25 +79,9 @@ offset_right = 67.0
 offset_bottom = 183.0
 ingredient_res = ExtResource("8_lx8mu")
 
-[node name="OrderGenerator" type="Node" parent="."]
+[node name="OrderGenerator" type="Node" parent="." node_paths=PackedStringArray("root_node", "mix_displayer")]
 script = ExtResource("10_5gpj7")
+root_node = NodePath("..")
+mix_displayer = NodePath("MixDisplayer")
 
-[node name="MixDisplayer" type="VBoxContainer" parent="." node_paths=PackedStringArray("container_display", "base_display", "additional_display")]
-layout_mode = 0
-offset_left = 190.0
-offset_top = 91.0
-offset_right = 230.0
-offset_bottom = 131.0
-script = ExtResource("11_hm40m")
-container_display = NodePath("Container")
-base_display = NodePath("Base")
-additional_display = NodePath("Additional")
-
-[node name="Additional" type="TextureRect" parent="MixDisplayer"]
-layout_mode = 2
-
-[node name="Base" type="TextureRect" parent="MixDisplayer"]
-layout_mode = 2
-
-[node name="Container" type="TextureRect" parent="MixDisplayer"]
-layout_mode = 2
+[node name="MixDisplayer" parent="OrderGenerator" instance=ExtResource("11_2afnp")]

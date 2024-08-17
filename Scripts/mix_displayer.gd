@@ -1,15 +1,19 @@
+class_name MixDisplayer
 extends VBoxContainer
 
 @export var container_display : TextureRect
 @export var base_display : TextureRect
 @export var additional_display : TextureRect
 
-var ing_to_rect = {
-	Constants.IngredientType.CONTAINER: container_display,
-	Constants.IngredientType.BASE: base_display,
-	Constants.IngredientType.ADDITIONAL: additional_display
-}
+# NEEDS TO BE SET IMMEDIATLY ON START
+var ing_to_rect = {}
 
+func _enter_tree() -> void:
+	ing_to_rect = {
+		Constants.IngredientType.CONTAINER: container_display,
+		Constants.IngredientType.BASE: base_display,
+		Constants.IngredientType.ADDITIONAL: additional_display
+	}
 
 func set_mix(new_mix: Mix):
 	var tmp_container = new_mix.get_ingredient(Constants.IngredientType.CONTAINER)
@@ -27,5 +31,5 @@ func set_display_ing(new_ing: Ingredient):
 	_set_texture(ing_to_rect[new_ing.ingredient_type], new_ing.ingredient_texture)
 
 
-func _set_texture(texture_rect: TextureRect, new_texture:Texture):
+func _set_texture(texture_rect: TextureRect, new_texture:Texture2D):
 	texture_rect.texture = new_texture

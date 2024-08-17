@@ -1,6 +1,7 @@
 extends Node
 
 @export var root_node : Node
+@export var mix_displayer : MixDisplayer
 # Chance to need an additonal ingredient from the additional type
 @export var additional_chance := .75
 
@@ -25,6 +26,8 @@ var _processed_ingredients = []
 
 func _ready() -> void:
 	process_ingredients()
+	# to test for now
+	mix_displayer.set_mix(generate_random_mix(Constants.MixType.SOLID))
 
 
 func generate_random_mix(type : Constants.MixType):
