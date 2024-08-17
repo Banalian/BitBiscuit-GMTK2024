@@ -46,7 +46,7 @@ func remove_ingredient(ingredient : Ingredient):
 	var tmp_mix : Mix = holding_mix if holding_mix else null
 	if not tmp_mix:
 		tmp_mix = Mix.new()
-	if holding_mix.remove(ingredient):
+	if tmp_mix.remove(ingredient):
 		holding_mix = tmp_mix
 		holding_mix_changed.emit(holding_mix)
 		print("Removed " + ingredient.ingredient_name + " from the holder")
