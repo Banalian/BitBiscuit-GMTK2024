@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://b2d4ccmmcd2vl"]
+
+[ext_resource type="Texture2D" uid="uid://vkqg2pxm8leg" path="res://Assets/Textures/Misc/BitBiscuit1x.png" id="1_oveo7"]
+[ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_glqxm"]
+
+[resource]
+script = ExtResource("2_glqxm")
+used_in = 0
+ingredient_type = 2
+ingredient_name = "Ant"
+ingredient_texture = ExtResource("1_oveo7")
