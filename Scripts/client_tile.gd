@@ -1,3 +1,4 @@
+class_name ClientTile
 extends Button
 
 signal client_mix_changed(new_client_mix)

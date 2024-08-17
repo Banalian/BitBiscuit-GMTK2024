@@ -1,9 +1,11 @@
+class_name OrderGenerator
 extends Node
 
 @export var root_node: Node
 @export var mix_displayer: MixDisplayer
 # Chance to need an additonal ingredient from the additional type
 @export var additional_chance:= .75
+@export var second_order_chance:= .5
 
 # Dictionary<IngredientType, Dictionary<MixType, Array<Ingredients>>>
 var _available_ingredients = {
@@ -27,7 +29,25 @@ var _processed_ingredients = []
 func _ready() -> void:
 	process_ingredients()
 	# to test for now
-	mix_displayer.set_mix(generate_random_mix(Constants.MixType.SOLID))
+	#mix_displayer.set_mix(generate_random_mix(Constants.MixType.SOLID))
+
+
+# generate at random either 1 mix, or 2 that uses both types
+func generate_mixes():
+	var mixes:= []
+	var first_type: Constants.MixType
+	var second_type: Constants.MixType
+	if randf() < 0.5:
+		first_type = Constants.MixType.SOLID
+		second_type = Constants.MixType.LIQUID
+	else:
+		first_type = Constants.MixType.LIQUID
+		second_type = Constants.MixType.SOLID
+	
+	mixes.append(generate_random_mix(first_type))
+	if randf() < second_order_chance:
+		mixes.append(generate_random_mix(second_type))
+	return mixes
 
 
 func generate_random_mix(type: Constants.MixType):

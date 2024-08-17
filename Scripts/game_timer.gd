@@ -5,13 +5,13 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_timer()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
+	$Label.text = "Time: %d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
 	pass
+
 
 func start_timer(time:= -1.0):
 	# start timer with base time if none give, else we use the given time
