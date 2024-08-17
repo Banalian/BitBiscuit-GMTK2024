@@ -41,3 +41,4 @@ Button/styles/focus = SubResource("StyleBoxEmpty_kov7t")
 Button/styles/hover = SubResource("StyleBoxEmpty_uxolf")
 Button/styles/normal = SubResource("StyleBoxEmpty_c707e")
 Button/styles/pressed = SubResource("StyleBoxEmpty_8wy5l")
+RichTextLabel/font_sizes/normal_font_size = 8

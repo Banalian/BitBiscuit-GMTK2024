@@ -69,33 +69,6 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_5tl7w")
 color_ramp = SubResource("Gradient_ocy7v")
 
-[node name="DialogueBackground" type="Panel" parent="ViewTop"]
-custom_minimum_size = Vector2(0, 81)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -81.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_d3yej")
-
-[node name="DialogueText" type="RichTextLabel" parent="ViewTop/DialogueBackground"]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-text = "[center]This beer is [tornado radius=2 freq=8][rainbow freq=0.5 sat=0.8]AMAZING!"
-fit_content = true
-shortcut_keys_enabled = false
-visible_characters_behavior = 1
-
 [node name="MarginContainer" type="MarginContainer" parent="ViewTop"]
 layout_mode = 1
 anchors_preset = 15
@@ -113,6 +86,32 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Switch"
+
+[node name="DialogueBackground" type="Panel" parent="ViewTop"]
+custom_minimum_size = Vector2(0, 81)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_d3yej")
+
+[node name="DialogueText" type="RichTextLabel" parent="ViewTop/DialogueBackground"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]hello :D dis is a a big text to test the testing box or whatever you want to callll thiiiiiiiiiiiiiis :)"
+fit_content = true
+shortcut_keys_enabled = false
 
 [node name="ViewBottom" type="Panel" parent="."]
 clip_contents = true
