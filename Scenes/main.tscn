@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca53ofrpltb0o"]
+[gd_scene load_steps=7 format=3 uid="uid://ca53ofrpltb0o"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_o11dq"]
+[ext_resource type="PackedScene" uid="uid://cnifnubqqwhnm" path="res://Scenes/client.tscn" id="2_locgf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auejg"]
 bg_color = Color(1, 1, 1, 0)
@@ -54,11 +55,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_auejg")
 
 [node name="BackgroundParticle" type="CPUParticles2D" parent="ViewTop"]
 position = Vector2(89, 89)
-amount = 128
+amount = 256
 lifetime = 8.0
 preprocess = 8.0
+randomness = 0.5
 emission_shape = 3
-emission_rect_extents = Vector2(160, 90)
+emission_rect_extents = Vector2(180, 90)
 direction = Vector2(1, 0.2)
 spread = 0.0
 gravity = Vector2(0, 0)
@@ -68,6 +70,9 @@ angle_max = 360.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_5tl7w")
 color_ramp = SubResource("Gradient_ocy7v")
+
+[node name="Client" parent="ViewTop" instance=ExtResource("2_locgf")]
+position = Vector2(249, 49)
 
 [node name="DialogueBackground" type="Panel" parent="ViewTop"]
 custom_minimum_size = Vector2(0, 81)
@@ -91,7 +96,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]This beer is [tornado radius=2 freq=8][rainbow freq=0.5 sat=0.8]AMAZING!"
+text = "[center]This beer is [tornado radius=2 freq=8][rainbow freq=0.5 sat=1.0]AMAZING!"
 fit_content = true
 shortcut_keys_enabled = false
 visible_characters_behavior = 1
@@ -113,6 +118,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Switch"
+
+[node name="BorderOverlap" type="Panel" parent="ViewTop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_auejg")
 
 [node name="ViewBottom" type="Panel" parent="."]
 clip_contents = true
