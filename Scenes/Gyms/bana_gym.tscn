@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="1_ku2gi"]
 [ext_resource type="Resource" uid="uid://i8hvccfjnr4u" path="res://Resources/water.tres" id="2_ijnft"]
 [ext_resource type="Resource" uid="uid://c13uqju2m5t44" path="res://Resources/sun.tres" id="3_majxs"]
-[ext_resource type="Script" path="res://Scripts/System/ingredient_holder.gd" id="4_bsiob"]
+[ext_resource type="Script" path="res://Scripts/ingredient_holder.gd" id="4_bsiob"]
 [ext_resource type="Script" path="res://Scripts/client_tile.gd" id="5_1k5kp"]
 [ext_resource type="Script" path="res://Scripts/trash.gd" id="6_jjirb"]
 [ext_resource type="Resource" uid="uid://c8amr3r5lgprb" path="res://Resources/bowl.tres" id="6_pdhmi"]
