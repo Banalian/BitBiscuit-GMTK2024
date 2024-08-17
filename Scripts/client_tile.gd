@@ -23,7 +23,7 @@ func try_give_mix():
 		client_mix = null
 		client_mix_changed.emit(client_mix)
 		print("client is now empty")
-	# else, couldn't give a drink because the holder already has one, do nothing
+	# else, couldn't give a mix because the holder already has one, do nothing
 
 
 func try_take_mix():
@@ -32,13 +32,14 @@ func try_take_mix():
 		client_mix = tmp_mix
 		client_mix_changed.emit(client_mix)
 		print("client took the drink")
-	# else, couldn't extract because the drink is invalid, do nothing
+	# else, couldn't extract because the mix is invalid, do nothing
 
 
 func _on_client_tile_pressed():
-	print ("test")
 	# when the client tile is pressed
 	if client_mix:
+		# try to put the client's mix in the holder
 		try_give_mix()
 	else:
+		# try to extract the mix from the holder to us
 		try_take_mix()
