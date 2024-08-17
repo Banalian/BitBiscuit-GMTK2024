@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ei4vqct5fgr"]
+
+[ext_resource type="Script" path="res://Scripts/client_tile.gd" id="1_wp7yl"]
+
+[node name="ClientTile" type="Button" node_paths=PackedStringArray("holder")]
+offset_left = 213.0
+offset_top = 16.0
+offset_right = 280.0
+offset_bottom = 47.0
+action_mode = 0
+text = "Client 1"
+script = ExtResource("1_wp7yl")
+holder = NodePath("")
+
+[connection signal="pressed" from="." to="." method="_on_client_tile_pressed"]

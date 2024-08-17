@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://u3lfp7bvh8v6"]
+
+[ext_resource type="Script" path="res://Scripts/ingredient_holder.gd" id="1_fxj6j"]
+
+[node name="Holder" type="Node" node_paths=PackedStringArray("root_node")]
+script = ExtResource("1_fxj6j")
+root_node = NodePath("")
