@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cw05l6nq3tc54"]
 
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="1_ku2gi"]
-[ext_resource type="Resource" uid="uid://i8hvccfjnr4u" path="res://Resources/water.tres" id="2_ijnft"]
-[ext_resource type="Resource" uid="uid://c13uqju2m5t44" path="res://Resources/sun.tres" id="3_majxs"]
 [ext_resource type="PackedScene" uid="uid://u3lfp7bvh8v6" path="res://Scenes/mix_holder.tscn" id="4_uoe76"]
 [ext_resource type="PackedScene" uid="uid://2ei4vqct5fgr" path="res://Scenes/client_tile.tscn" id="5_mdyf4"]
+[ext_resource type="Resource" uid="uid://dhe38oi674gn" path="res://Resources/Bases/beer.tres" id="5_xtt3m"]
 [ext_resource type="PackedScene" uid="uid://dv7o36lwhf2h3" path="res://Scenes/trash.tscn" id="6_nvdae"]
 [ext_resource type="Resource" uid="uid://c8amr3r5lgprb" path="res://Resources/Containers/bowl.tres" id="6_pdhmi"]
+[ext_resource type="Resource" uid="uid://bq5v7b0lj8ggw" path="res://Resources/Bases/building.tres" id="6_uwm81"]
 [ext_resource type="Resource" uid="uid://b4d11f5dmdks2" path="res://Resources/Containers/cup.tres" id="7_he073"]
 [ext_resource type="Resource" uid="uid://b2d4ccmmcd2vl" path="res://Resources/Additionals/ant.tres" id="8_lx8mu"]
 [ext_resource type="Script" path="res://Scripts/order_generator.gd" id="10_5gpj7"]
@@ -20,14 +20,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Water" parent="." instance=ExtResource("1_ku2gi")]
-position = Vector2(46, 85)
-ingredient_res = ExtResource("2_ijnft")
-
-[node name="Sun" parent="." instance=ExtResource("1_ku2gi")]
-position = Vector2(97, 85)
-ingredient_res = ExtResource("3_majxs")
 
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("4_uoe76")]
 position = Vector2(270, 92)
@@ -48,6 +40,14 @@ offset_top = 53.0
 offset_right = 314.0
 offset_bottom = 84.0
 holder = NodePath("../Holder")
+
+[node name="Beer" parent="." instance=ExtResource("1_ku2gi")]
+position = Vector2(46, 85)
+ingredient_res = ExtResource("5_xtt3m")
+
+[node name="Building" parent="." instance=ExtResource("1_ku2gi")]
+position = Vector2(97, 85)
+ingredient_res = ExtResource("6_uwm81")
 
 [node name="Bowl" parent="." instance=ExtResource("1_ku2gi")]
 position = Vector2(98, 29)

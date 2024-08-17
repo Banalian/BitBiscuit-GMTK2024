@@ -7,7 +7,6 @@ signal removed_ingredient (ingredient: Ingredient)
 @export var ingredient_res: Ingredient
 @export var button: Button
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	button.text = ingredient_res.ingredient_name
 	button.icon = ingredient_res.ingredient_texture

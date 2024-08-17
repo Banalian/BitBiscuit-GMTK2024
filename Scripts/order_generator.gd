@@ -69,5 +69,5 @@ func _get_available_ingredients():
 	var ingredients := []
 	for child in root_node.get_children():
 		if child is IngredientButton:
-			ingredients.append(child.ingredient_res)
+			ingredients.append(child.ingredient_res as Ingredient)
 	return ingredients
