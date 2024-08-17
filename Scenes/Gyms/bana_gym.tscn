@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw05l6nq3tc54"]
+[gd_scene load_steps=13 format=3 uid="uid://cw05l6nq3tc54"]
 
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="1_ku2gi"]
 [ext_resource type="Resource" uid="uid://i8hvccfjnr4u" path="res://Resources/water.tres" id="2_ijnft"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b2d4ccmmcd2vl" path="res://Resources/ant.tres" id="8_lx8mu"]
 [ext_resource type="Script" path="res://Scripts/order_generator.gd" id="10_5gpj7"]
 [ext_resource type="PackedScene" uid="uid://dpskv36p3tjfs" path="res://Scenes/mix_displayer.tscn" id="11_2afnp"]
+[ext_resource type="Script" path="res://Scripts/game_timer.gd" id="12_5d31o"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -66,3 +67,14 @@ root_node = NodePath("..")
 mix_displayer = NodePath("MixDisplayer")
 
 [node name="MixDisplayer" parent="OrderGenerator" instance=ExtResource("11_2afnp")]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="GameTimer" type="Node2D" parent="."]
+script = ExtResource("12_5d31o")
+
+[node name="Timer" type="Timer" parent="GameTimer"]
+
+[node name="Label" type="Label" parent="GameTimer"]
+offset_right = 40.0
+offset_bottom = 25.0

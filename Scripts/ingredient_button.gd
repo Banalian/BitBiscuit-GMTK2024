@@ -12,10 +12,7 @@ func _ready() -> void:
 	button.text = ingredient_res.ingredient_name
 	button.icon = ingredient_res.ingredient_texture
 	if ingredient_res.ingredient_scene:
-		# using size for x to 
-		#var offset:= Vector2(size.x/2,icon.get_height()/2)
 		var scene = ingredient_res.ingredient_scene.instantiate() as Node2D
-		#scene.position = offset
 		add_child(scene)
 
 
@@ -39,3 +36,7 @@ func _on_Button_gui_input(event):
 				add_ingredient()
 			MOUSE_BUTTON_RIGHT:
 				remove_ingredient()
+
+
+func toggle_ingredient_button_state():
+	button.disabled = not button.disabled

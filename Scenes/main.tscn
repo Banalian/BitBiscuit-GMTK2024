@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca53ofrpltb0o"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_o11dq"]
-[ext_resource type="PackedScene" uid="uid://cnifnubqqwhnm" path="res://Scenes/client.tscn" id="2_locgf"]
+[ext_resource type="PackedScene" path="res://Scenes/client.tscn" id="2_locgf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auejg"]
 bg_color = Color(1, 1, 1, 0)
