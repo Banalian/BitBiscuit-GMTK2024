@@ -1,6 +1,10 @@
+class_name IngredientButton
 extends Button
 
 @export var ingredient_res : Ingredient
+
+signal added_ingredient (ingredient : Ingredient)
+signal removed_ingredient (ingredient : Ingredient)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,3 +16,19 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func add_ingredient():
+	added_ingredient.emit(ingredient_res)
+
+
+func remove_ingredient():
+	removed_ingredient.emit(ingredient_res)
+
+func _on_Button_gui_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			MOUSE_BUTTON_LEFT :
+				add_ingredient()
+			MOUSE_BUTTON_RIGHT:
+				remove_ingredient()

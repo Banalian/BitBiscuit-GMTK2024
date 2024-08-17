@@ -6,3 +6,5 @@
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_oeb5v")
+
+[connection signal="gui_input" from="." to="." method="_on_Button_gui_input"]
