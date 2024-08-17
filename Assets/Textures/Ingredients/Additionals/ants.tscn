@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx2v2lonn1n6k"]
+
+[sub_resource type="Curve" id="Curve_eojbc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.252809, 1), 0.0, 0.0, 0, 0, Vector2(0.747191, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Ants" type="CPUParticles2D"]
+amount = 32
+lifetime = 2.0
+preprocess = 2.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 4.0
+orbit_velocity_min = -0.05
+orbit_velocity_max = 0.05
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_eojbc")
+color = Color(0.247059, 0.247059, 0.247059, 1)
