@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_hntgn")
-is_base_ingredient = true
+ingredient_type = 0
 ingredient_name = "Sun"
 ingredient_texture = ExtResource("1_m7fba")

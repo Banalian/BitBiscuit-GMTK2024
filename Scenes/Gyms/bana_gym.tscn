@@ -15,18 +15,18 @@ grow_vertical = 2
 
 [node name="Water" parent="." instance=ExtResource("1_ku2gi")]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 152.0
-offset_right = 137.0
-offset_bottom = 160.0
+offset_left = 22.0
+offset_top = 17.0
+offset_right = 30.0
+offset_bottom = 25.0
 ingredient_res = ExtResource("2_ijnft")
 
 [node name="Sun" parent="." instance=ExtResource("1_ku2gi")]
 layout_mode = 0
-offset_left = 462.0
-offset_top = 163.0
-offset_right = 470.0
-offset_bottom = 171.0
+offset_left = 173.0
+offset_top = 68.0
+offset_right = 181.0
+offset_bottom = 76.0
 ingredient_res = ExtResource("3_majxs")
 
 [node name="Node" type="Node" parent="." node_paths=PackedStringArray("root_node")]

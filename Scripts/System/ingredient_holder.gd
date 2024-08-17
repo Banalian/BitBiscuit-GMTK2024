@@ -3,14 +3,12 @@ extends Node
 
 @export var root_node : Node
 
-# Aimed to be <Ingredient, bool>
-# Could be an Array, but having a dict allows for fast check (if dict.ing, then there's the ingredient)
-var ingredient_list : Dictionary
+# Aimed to be <IngredientType, Ingredient>
+var final_mix : Dictionary = {}
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ingredient_list = {}
 	connect_all_ingredients()
 	pass # Replace with function body.
 	
@@ -29,14 +27,16 @@ func connect_all_ingredients():
 
 
 func add_ingredient(ingredient : Ingredient):
-	ingredient_list[ingredient] = true
-	print("added" + ingredient.ingredient_name)
+	if not final_mix.get_or_add(ingredient.ingredient_type, null):
+		final_mix[ingredient.ingredient_type] = ingredient
+		print("added" + ingredient.ingredient_name)
 	pass
 
 
 func remove_ingredient(ingredient : Ingredient):
-	ingredient_list.erase(ingredient)
-	print("removed" + ingredient.ingredient_name)
+	if final_mix.get_or_add(ingredient.ingredient_type, null) == ingredient:
+		final_mix[ingredient.ingredient_type] = null
+		print("removed" + ingredient.ingredient_name)
 	pass
 
 
