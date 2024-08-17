@@ -1,12 +1,12 @@
 class_name Mix
 
 # Aimed to be <IngredientType, Ingredient>
-var _content : Dictionary = {}
-var _type : Constants.MixType
+var _content: Dictionary = {}
+var _type: Constants.MixType
 
 
 # Returns true if the ingredient was accepted, false otherwise
-func add(ingredient : Ingredient):
+func add(ingredient: Ingredient):
 	var add_ing := false
 	# if there's already something for this, don't accept it
 	if not _content.get_or_add(ingredient.ingredient_type, null):
@@ -28,7 +28,7 @@ func add(ingredient : Ingredient):
 	return add_ing
 
 # Returns true if the ingredient was removed, false otherwise
-func remove(ingredient : Ingredient):
+func remove(ingredient: Ingredient):
 	var remove_ing := false
 	var tmp_ing : Ingredient = _content.get_or_add(ingredient.ingredient_type, null)
 	# if the ingredient exists, and is the same
@@ -45,7 +45,7 @@ func remove(ingredient : Ingredient):
 		_content[ingredient.ingredient_type] = null
 	return remove_ing
 
-func get_ingredient(type : Constants.IngredientType):
+func get_ingredient(type: Constants.IngredientType):
 	return _content.get_or_add(type, null)
 
 

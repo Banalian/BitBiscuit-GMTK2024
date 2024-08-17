@@ -3,10 +3,10 @@ extends Node
 
 signal holding_mix_changed(new_holding_mix)
 
-@export var root_node : Node
+@export var root_node: Node
 
-var holding_mix : Mix = null
-var _connected_buttons := []
+var holding_mix: Mix = null
+var _connected_buttons:= []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,7 +32,7 @@ func connect_all_ingredients():
 			_connected_buttons.append(ing_button)
 
 
-func add_ingredient(ingredient : Ingredient):
+func add_ingredient(ingredient: Ingredient):
 	var tmp_mix : Mix = holding_mix if holding_mix else null
 	if not tmp_mix:
 		tmp_mix = Mix.new()
@@ -42,7 +42,7 @@ func add_ingredient(ingredient : Ingredient):
 		print("Added " + ingredient.ingredient_name + " To the holder")
 
 
-func remove_ingredient(ingredient : Ingredient):
+func remove_ingredient(ingredient: Ingredient):
 	var tmp_mix : Mix = holding_mix if holding_mix else null
 	if not tmp_mix:
 		tmp_mix = Mix.new()
@@ -64,7 +64,7 @@ func extract_mix():
 
 
 # Used when trying to take an existing mix from a client tile
-func import_mix(mix : Mix):
+func import_mix(mix: Mix):
 	if holding_mix:
 		# We already have a mix, refuse it
 		return false

@@ -1,9 +1,9 @@
 extends Node
 
-@export var root_node : Node
-@export var mix_displayer : MixDisplayer
+@export var root_node: Node
+@export var mix_displayer: MixDisplayer
 # Chance to need an additonal ingredient from the additional type
-@export var additional_chance := .75
+@export var additional_chance:= .75
 
 # Dictionary<IngredientType, Dictionary<MixType, Array<Ingredients>>>
 var _available_ingredients = {
@@ -30,7 +30,7 @@ func _ready() -> void:
 	mix_displayer.set_mix(generate_random_mix(Constants.MixType.SOLID))
 
 
-func generate_random_mix(type : Constants.MixType):
+func generate_random_mix(type: Constants.MixType):
 	var final_mix = Mix.new()
 	final_mix.add(_get_random_ing_in_array(_available_ingredients[Constants.IngredientType.CONTAINER][type]))
 	final_mix.add(_get_random_ing_in_array(_available_ingredients[Constants.IngredientType.BASE][type]))
@@ -60,7 +60,7 @@ func process_ingredients():
 		_processed_ingredients.append(ingredient)
 
 
-func _get_random_ing_in_array(array :Array):
+func _get_random_ing_in_array(array: Array):
 	return array[randi() % array.size()]
 
 

@@ -2,10 +2,10 @@ extends Button
 
 signal client_mix_changed(new_client_mix)
 
-@export var holder : IngredientHolder
+@export var holder: IngredientHolder
 
 
-var client_mix : Mix = null
+var client_mix: Mix = null
 
 
 # Called when the node enters the scene tree for the first time.
