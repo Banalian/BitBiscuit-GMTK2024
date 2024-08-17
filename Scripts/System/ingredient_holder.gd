@@ -4,7 +4,7 @@ signal holding_mix_changed(new_holding_mix)
 
 @export var root_node : Node
 
-var holding_mix : Mix
+var holding_mix : Mix = Mix.new()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -44,7 +44,7 @@ func remove_ingredient(ingredient : Ingredient):
 
 # Used when clicking a client tile
 func extract_mix():
-	if not holding_mix.get_or_add(Constants.IngredientType.CONTAINER, null):
+	if holding_mix.is_mix_empty():
 		# Means it's not a valid mix yet
 		return null
 	var extracted_mix = holding_mix
@@ -55,7 +55,7 @@ func extract_mix():
 
 # Used when trying to take an existing mix from a client tile
 func import_mix(mix : Mix):
-	if holding_mix.get_or_add(Constants.IngredientType.CONTAINER, null):
+	if holding_mix.is_mix_empty():
 		# We already have a mix, refuse it
 		return false
 	holding_mix = mix

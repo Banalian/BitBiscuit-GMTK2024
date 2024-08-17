@@ -4,8 +4,6 @@ class_name Mix
 var _content : Dictionary = {}
 var _type : Constants.MixType
 
-# is the mix a drink? if false, it's a food mix
-var _is_liquid:=true
 
 # Returns true if the ingredient was accepted, false otherwise
 func add(ingredient : Ingredient):
@@ -17,7 +15,7 @@ func add(ingredient : Ingredient):
 			add_ing = true
 		else:
 			# if there's a container
-			if _content[Constants.IngredientType.CONTAINER]:
+			if _content.get_or_add(Constants.IngredientType.CONTAINER, null):
 				# if it's allowed for all types
 				if ingredient.used_in == Constants.MixType.ALL\
 				# or if it's valid with the currenty mix
@@ -48,8 +46,10 @@ func remove(ingredient : Ingredient):
 	return remove_ing
 
 
-func get_mix():
-	return _content
+func is_mix_empty():
+	return _content.get_or_add(Constants.IngredientType.CONTAINER, null)\
+	and _content.get_or_add(Constants.IngredientType.BASE, null)\
+	and _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
 
 
 func clear():

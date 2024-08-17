@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_rpq8t")
 used_in = 2
-ingredient_type = 2
+ingredient_type = 1
 ingredient_name = "Water"
 ingredient_texture = ExtResource("1_rixy7")
