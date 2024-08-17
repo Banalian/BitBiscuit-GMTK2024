@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://vgidximh4el8"]
+
+[sub_resource type="Curve" id="Curve_1k1gr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.247191, 1), 0.0, 0.0, 0, 0, Vector2(0.747191, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_akwtg"]
+offsets = PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 4
+
+[node name="PlaceholderAdditional" type="CPUParticles2D"]
+amount = 64
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+gravity = Vector2(0, 0)
+angle_max = 360.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_1k1gr")
+color_ramp = SubResource("Gradient_akwtg")

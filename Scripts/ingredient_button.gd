@@ -1,15 +1,22 @@
 class_name IngredientButton
-extends Button
+extends Node
 
-@export var ingredient_res : Ingredient
+signal added_ingredient (ingredient: Ingredient)
+signal removed_ingredient (ingredient: Ingredient)
 
-signal added_ingredient (ingredient : Ingredient)
-signal removed_ingredient (ingredient : Ingredient)
+@export var ingredient_res: Ingredient
+@export var button: Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = ingredient_res.ingredient_name
-	icon = ingredient_res.ingredient_texture
+	button.text = ingredient_res.ingredient_name
+	button.icon = ingredient_res.ingredient_texture
+	if ingredient_res.ingredient_scene:
+		# using size for x to 
+		#var offset:= Vector2(size.x/2,icon.get_height()/2)
+		var scene = ingredient_res.ingredient_scene.instantiate() as Node2D
+		#scene.position = offset
+		add_child(scene)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +30,7 @@ func add_ingredient():
 
 func remove_ingredient():
 	removed_ingredient.emit(ingredient_res)
+
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:

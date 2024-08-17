@@ -21,19 +21,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Water" parent="." instance=ExtResource("1_ku2gi")]
-layout_mode = 0
-offset_left = 56.0
-offset_top = 64.0
-offset_right = 91.0
-offset_bottom = 121.0
+position = Vector2(46, 85)
 ingredient_res = ExtResource("2_ijnft")
 
 [node name="Sun" parent="." instance=ExtResource("1_ku2gi")]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 64.0
-offset_right = 43.0
-offset_bottom = 121.0
+position = Vector2(97, 85)
 ingredient_res = ExtResource("3_majxs")
 
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("4_uoe76")]
@@ -56,27 +48,15 @@ offset_bottom = 84.0
 holder = NodePath("../Holder")
 
 [node name="Bowl" parent="." instance=ExtResource("1_ku2gi")]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 5.0
-offset_right = 44.0
-offset_bottom = 62.0
+position = Vector2(98, 29)
 ingredient_res = ExtResource("6_pdhmi")
 
 [node name="Cup" parent="." instance=ExtResource("1_ku2gi")]
-layout_mode = 0
-offset_left = 56.0
-offset_top = 5.0
-offset_right = 91.0
-offset_bottom = 62.0
+position = Vector2(48, 29)
 ingredient_res = ExtResource("7_he073")
 
 [node name="Ant" parent="." instance=ExtResource("1_ku2gi")]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 126.0
-offset_right = 67.0
-offset_bottom = 183.0
+position = Vector2(70, 147)
 ingredient_res = ExtResource("8_lx8mu")
 
 [node name="OrderGenerator" type="Node" parent="." node_paths=PackedStringArray("root_node", "mix_displayer")]
