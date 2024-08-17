@@ -1,11 +1,10 @@
+class_name IngredientHolder
 extends Node
-
 signal holding_mix_changed(new_holding_mix)
 
 @export var root_node : Node
 
-# Aimed to be <IngredientType, Ingredient>
-var holding_mix : Dictionary = {}
+var holding_mix : Mix
 
 
 # Called when the node enters the scene tree for the first time.
@@ -32,17 +31,15 @@ func connect_all_ingredients():
 
 
 func add_ingredient(ingredient : Ingredient):
-	if not holding_mix.get_or_add(ingredient.ingredient_type, null):
-		holding_mix[ingredient.ingredient_type] = ingredient
+	if holding_mix.add(ingredient):
 		holding_mix_changed.emit(holding_mix)
-		print("added" + ingredient.ingredient_name)
+		print("Added " + ingredient.ingredient_name + " To the holder")
 
 
 func remove_ingredient(ingredient : Ingredient):
-	if holding_mix.get_or_add(ingredient.ingredient_type, null) == ingredient:
-		holding_mix[ingredient.ingredient_type] = null
+	if holding_mix.remove(ingredient):
+		print("Removed " + ingredient.ingredient_name + " from the holder")
 		holding_mix_changed.emit(holding_mix)
-		print("removed" + ingredient.ingredient_name)
 
 
 # Used when clicking a client tile
@@ -51,15 +48,16 @@ func extract_mix():
 		# Means it's not a valid mix yet
 		return null
 	var extracted_mix = holding_mix
-	holding_mix = {}
+	holding_mix = Mix.new()
 	holding_mix_changed.emit(holding_mix)
 	return extracted_mix
 
 
 # Used when trying to take an existing mix from a client tile
-func import_mix(mix : Dictionary):
+func import_mix(mix : Mix):
 	if holding_mix.get_or_add(Constants.IngredientType.CONTAINER, null):
 		# We already have a mix, refuse it
-		return null
-	holding_mix = mix.duplicate()
+		return false
+	holding_mix = mix
 	holding_mix_changed.emit(holding_mix)
+	return true
