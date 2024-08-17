@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://dhe38oi674gn"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dhe38oi674gn"]
 
+[ext_resource type="Texture2D" uid="uid://dpbsvgmvame68" path="res://Assets/Textures/Ingredients/Bases/Beer.png" id="1_ocags"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="1_yy7cm"]
 
 [resource]
 script = ExtResource("1_yy7cm")
-used_in = 0
-ingredient_type = 0
-ingredient_name = "Invalid"
+used_in = 2
+ingredient_type = 1
+ingredient_name = "Beer"
+ingredient_texture = ExtResource("1_ocags")
