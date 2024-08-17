@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://u3lfp7bvh8v6"]
+[gd_scene load_steps=3 format=3 uid="uid://u3lfp7bvh8v6"]
 
 [ext_resource type="Script" path="res://Scripts/ingredient_holder.gd" id="1_fxj6j"]
+[ext_resource type="PackedScene" uid="uid://dpskv36p3tjfs" path="res://Scenes/mix_displayer.tscn" id="2_vsc11"]
 
-[node name="Holder" type="Node" node_paths=PackedStringArray("root_node")]
+[node name="Holder" type="Node2D"]
 script = ExtResource("1_fxj6j")
-root_node = NodePath("")
+
+[node name="MixDisplayer" parent="." instance=ExtResource("2_vsc11")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="holding_mix_changed" from="." to="MixDisplayer" method="set_mix"]

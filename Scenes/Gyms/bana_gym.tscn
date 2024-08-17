@@ -29,6 +29,7 @@ position = Vector2(97, 85)
 ingredient_res = ExtResource("3_majxs")
 
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("4_uoe76")]
+position = Vector2(270, 92)
 root_node = NodePath("..")
 
 [node name="ClientTile" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("5_mdyf4")]
