@@ -22,23 +22,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("4_uoe76")]
-position = Vector2(270, 92)
+position = Vector2(212, 15)
 root_node = NodePath("..")
 
 [node name="ClientTile" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("5_mdyf4")]
 layout_mode = 0
-offset_left = 246.0
-offset_top = 6.0
-offset_right = 313.0
-offset_bottom = 37.0
+offset_left = 248.0
+offset_top = 1.0
+offset_right = 315.0
+offset_bottom = 32.0
 holder = NodePath("../Holder")
 
 [node name="Trash" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("6_nvdae")]
 layout_mode = 0
 offset_left = 247.0
-offset_top = 53.0
+offset_top = 35.0
 offset_right = 314.0
-offset_bottom = 84.0
+offset_bottom = 66.0
 holder = NodePath("../Holder")
 
 [node name="Beer" parent="." instance=ExtResource("1_ku2gi")]
@@ -61,20 +61,21 @@ ingredient_res = ExtResource("7_he073")
 position = Vector2(70, 147)
 ingredient_res = ExtResource("8_lx8mu")
 
-[node name="OrderGenerator" type="Node" parent="." node_paths=PackedStringArray("root_node", "mix_displayer")]
-script = ExtResource("10_5gpj7")
-root_node = NodePath("..")
-mix_displayer = NodePath("MixDisplayer")
-
-[node name="MixDisplayer" parent="OrderGenerator" instance=ExtResource("11_2afnp")]
-
 [node name="GameManager" type="Node" parent="."]
 
-[node name="GameTimer" type="Node2D" parent="."]
+[node name="GameTimer" type="Node2D" parent="GameManager"]
 script = ExtResource("12_5d31o")
 
-[node name="Timer" type="Timer" parent="GameTimer"]
+[node name="Timer" type="Timer" parent="GameManager/GameTimer"]
 
-[node name="Label" type="Label" parent="GameTimer"]
+[node name="Label" type="Label" parent="GameManager/GameTimer"]
 offset_right = 40.0
 offset_bottom = 25.0
+
+[node name="OrderGenerator" type="Node" parent="GameManager" node_paths=PackedStringArray("root_node", "mix_displayer")]
+script = ExtResource("10_5gpj7")
+root_node = NodePath("../..")
+mix_displayer = NodePath("MixDisplayer")
+
+[node name="MixDisplayer" parent="GameManager/OrderGenerator" instance=ExtResource("11_2afnp")]
+position = Vector2(152, 15)

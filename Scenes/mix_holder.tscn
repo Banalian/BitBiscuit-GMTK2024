@@ -7,9 +7,5 @@
 script = ExtResource("1_fxj6j")
 
 [node name="MixDisplayer" parent="." instance=ExtResource("2_vsc11")]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="holding_mix_changed" from="." to="MixDisplayer" method="set_mix"]

@@ -2,24 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/mix_displayer.gd" id="1_574b8"]
 
-[node name="MixDisplayer" type="VBoxContainer" node_paths=PackedStringArray("container_display", "base_display", "additional_display")]
-offset_left = 190.0
-offset_top = 91.0
-offset_right = 230.0
-offset_bottom = 131.0
+[node name="MixDisplayer" type="Node2D" node_paths=PackedStringArray("container_display", "base_display", "additional_display")]
 script = ExtResource("1_574b8")
 container_display = NodePath("Container")
 base_display = NodePath("Base")
 additional_display = NodePath("Additional")
 
-[node name="Additional" type="TextureRect" parent="."]
-layout_mode = 2
-stretch_mode = 3
+[node name="Container" type="Sprite2D" parent="."]
 
-[node name="Base" type="TextureRect" parent="."]
-layout_mode = 2
-stretch_mode = 3
+[node name="Base" type="Sprite2D" parent="."]
+offset = Vector2(0, 4)
 
-[node name="Container" type="TextureRect" parent="."]
-layout_mode = 2
-stretch_mode = 3
+[node name="Additional" type="Sprite2D" parent="."]

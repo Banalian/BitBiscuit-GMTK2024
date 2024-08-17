@@ -1,9 +1,9 @@
 class_name MixDisplayer
-extends VBoxContainer
+extends Node2D
 
-@export var container_display: TextureRect
-@export var base_display: TextureRect
-@export var additional_display: TextureRect
+@export var container_display: Sprite2D
+@export var base_display: Sprite2D
+@export var additional_display: Sprite2D
 
 # NEEDS TO BE SET IMMEDIATLY ON START
 var ing_to_rect = {}
@@ -54,11 +54,9 @@ func set_display_ing(new_ing: Ingredient):
 			_loaded_scene.free()
 			_loaded_scene = null
 		if new_ing.ingredient_scene:
-			var offset:= Vector2(additional_display.get_parent_control().size.x/2, new_ing.ingredient_texture.get_size().y/2)
 			_loaded_scene = new_ing.ingredient_scene.instantiate() as Node2D
-			_loaded_scene.position = offset
 			additional_display.add_child(_loaded_scene)
 
 
-func _set_texture(texture_rect: TextureRect, new_texture:Texture2D):
-	texture_rect.texture = new_texture
+func _set_texture(sprite_2d: Sprite2D, new_texture:Texture2D):
+	sprite_2d.texture = new_texture
