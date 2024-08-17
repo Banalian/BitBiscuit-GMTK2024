@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bq5v7b0lj8ggw"]
+
+[ext_resource type="Texture2D" uid="uid://dpbsvgmvame68" path="res://Assets/Textures/Ingredients/Bases/Beer.png" id="1_6slab"]
+[ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_kxnjn"]
+
+[resource]
+script = ExtResource("2_kxnjn")
+used_in = 2
+ingredient_type = 1
+ingredient_name = "Beer"
+ingredient_texture = ExtResource("1_6slab")

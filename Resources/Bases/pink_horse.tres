@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bujymccl3xnsf"]
+
+[ext_resource type="Texture2D" uid="uid://c156kuuxv4pdq" path="res://Assets/Textures/Ingredients/Bases/Forest.png" id="1_v0qng"]
+[ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_oc7lo"]
+
+[resource]
+script = ExtResource("2_oc7lo")
+used_in = 1
+ingredient_type = 1
+ingredient_name = "Forest"
+ingredient_texture = ExtResource("1_v0qng")

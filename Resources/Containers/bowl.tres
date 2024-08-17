@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c8amr3r5lgprb"]
 
-[ext_resource type="Texture2D" uid="uid://vkqg2pxm8leg" path="res://Assets/Textures/Misc/BitBiscuit1x.png" id="1_bsqq7"]
+[ext_resource type="Texture2D" uid="uid://iwwgqwsm8bc" path="res://Assets/Textures/Ingredients/Containers/Bowl.png" id="1_ci4ky"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_ljm1d"]
 
 [resource]
@@ -8,4 +8,4 @@ script = ExtResource("2_ljm1d")
 used_in = 1
 ingredient_type = 0
 ingredient_name = "Bowl"
-ingredient_texture = ExtResource("1_bsqq7")
+ingredient_texture = ExtResource("1_ci4ky")

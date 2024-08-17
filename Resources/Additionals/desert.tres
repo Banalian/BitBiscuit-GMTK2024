@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://r1eu2ey3046m"]
+
+[ext_resource type="PackedScene" uid="uid://dojqyjq56sfjh" path="res://Assets/Textures/Ingredients/Additionals/desert.tscn" id="1_s4m83"]
+[ext_resource type="Texture2D" uid="uid://dk18rqqoqwn2q" path="res://Assets/Textures/UI/ItemEmpty.png" id="2_q1f13"]
+[ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="3_1bnxf"]
+
+[resource]
+script = ExtResource("3_1bnxf")
+used_in = 0
+ingredient_type = 2
+ingredient_name = "Desert"
+ingredient_texture = ExtResource("2_q1f13")
+ingredient_scene = ExtResource("1_s4m83")
