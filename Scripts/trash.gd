@@ -18,7 +18,7 @@ func try_trash_mix():
 	var tmp_mix = holder.extract_mix()
 	if tmp_mix:
 		mix_thrashed.emit(tmp_mix)
-		print("trash took the drink")
+		print("trash took the mix")
 	# else, couldn't extract because the mix is invalid, do nothing
 
 

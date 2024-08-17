@@ -31,7 +31,7 @@ func try_take_mix():
 	if tmp_mix:
 		client_mix = tmp_mix
 		client_mix_changed.emit(client_mix)
-		print("client took the drink")
+		print("client took the mix")
 	# else, couldn't extract because the mix is invalid, do nothing
 
 
