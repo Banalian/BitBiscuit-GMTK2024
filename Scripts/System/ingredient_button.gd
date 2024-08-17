@@ -10,7 +10,6 @@ signal removed_ingredient (ingredient : Ingredient)
 func _ready() -> void:
 	text = ingredient_res.ingredient_name
 	icon = ingredient_res.ingredient_texture
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
