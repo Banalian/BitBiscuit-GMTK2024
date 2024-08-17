@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw05l6nq3tc54"]
+[gd_scene load_steps=10 format=3 uid="uid://cw05l6nq3tc54"]
 
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="1_ku2gi"]
 [ext_resource type="Resource" uid="uid://i8hvccfjnr4u" path="res://Resources/water.tres" id="2_ijnft"]
 [ext_resource type="Resource" uid="uid://c13uqju2m5t44" path="res://Resources/sun.tres" id="3_majxs"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient_holder.gd" id="4_bsiob"]
 [ext_resource type="Script" path="res://Scripts/client_tile.gd" id="5_1k5kp"]
+[ext_resource type="Script" path="res://Scripts/trash.gd" id="6_jjirb"]
 [ext_resource type="Resource" uid="uid://c8amr3r5lgprb" path="res://Resources/bowl.tres" id="6_pdhmi"]
 [ext_resource type="Resource" uid="uid://b4d11f5dmdks2" path="res://Resources/cup.tres" id="7_he073"]
 [ext_resource type="Resource" uid="uid://b2d4ccmmcd2vl" path="res://Resources/ant.tres" id="8_lx8mu"]
@@ -33,7 +34,7 @@ offset_right = 181.0
 offset_bottom = 76.0
 ingredient_res = ExtResource("3_majxs")
 
-[node name="Node" type="Node" parent="." node_paths=PackedStringArray("root_node")]
+[node name="Holder" type="Node" parent="." node_paths=PackedStringArray("root_node")]
 script = ExtResource("4_bsiob")
 root_node = NodePath("..")
 
@@ -46,7 +47,18 @@ offset_bottom = 47.0
 action_mode = 0
 text = "Client 1"
 script = ExtResource("5_1k5kp")
-holder = NodePath("../Node")
+holder = NodePath("../Holder")
+
+[node name="Trash" type="Button" parent="." node_paths=PackedStringArray("holder")]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 52.0
+offset_right = 281.0
+offset_bottom = 83.0
+action_mode = 0
+text = "Trash"
+script = ExtResource("6_jjirb")
+holder = NodePath("../Holder")
 
 [node name="Bowl" parent="." instance=ExtResource("1_ku2gi")]
 layout_mode = 0
@@ -73,3 +85,4 @@ offset_bottom = 35.0
 ingredient_res = ExtResource("8_lx8mu")
 
 [connection signal="pressed" from="ClientTile" to="ClientTile" method="_on_client_tile_pressed"]
+[connection signal="pressed" from="Trash" to="Trash" method="_on_trash_tile_pressed"]
