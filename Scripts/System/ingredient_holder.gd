@@ -1,16 +1,16 @@
 class_name IngredientHolder
 extends Node
+
 signal holding_mix_changed(new_holding_mix)
 
 @export var root_node : Node
 
 var holding_mix : Mix = null
-
+var _connected_buttons := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect_all_ingredients()
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,11 +23,13 @@ func connect_all_ingredients():
 	for child in root_node.get_children():
 		if child is IngredientButton:
 			buttons.append(child)
-	# manually connect their signal to us
+	# manually connect their signal to us, if it's not already done
 	for button in buttons :
 		var ing_button = button as IngredientButton
-		ing_button.connect(ing_button.added_ingredient.get_name(), add_ingredient)
-		ing_button.connect(ing_button.removed_ingredient.get_name(), remove_ingredient)
+		if not ing_button in _connected_buttons:
+			ing_button.connect(ing_button.added_ingredient.get_name(), add_ingredient)
+			ing_button.connect(ing_button.removed_ingredient.get_name(), remove_ingredient)
+			_connected_buttons.append(ing_button)
 
 
 func add_ingredient(ingredient : Ingredient):
