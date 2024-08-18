@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://b2d4ccmmcd2vl"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://b2d4ccmmcd2vl"]
 
 [ext_resource type="PackedScene" uid="uid://dx2v2lonn1n6k" path="res://Assets/Textures/Ingredients/Additionals/ants.tscn" id="1_1p73h"]
 [ext_resource type="Texture2D" uid="uid://dk18rqqoqwn2q" path="res://Assets/Textures/UI/ItemEmpty.png" id="2_b64sc"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_glqxm"]
+[ext_resource type="Texture2D" uid="uid://jo4b16dk7mew" path="res://Assets/Textures/Ingredients/Stations/Ant.png" id="2_tt322"]
 
 [resource]
 script = ExtResource("2_glqxm")
@@ -10,4 +11,5 @@ used_in = 0
 ingredient_type = 2
 ingredient_name = "Ant"
 ingredient_texture = ExtResource("2_b64sc")
+ingredient_station = ExtResource("2_tt322")
 ingredient_scene = ExtResource("1_1p73h")

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cdwrdu3mfv1y5"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://cdwrdu3mfv1y5"]
 
 [ext_resource type="Texture2D" uid="uid://43assrb776e0" path="res://Assets/Textures/Ingredients/Bases/Planet.png" id="1_8idlr"]
+[ext_resource type="Texture2D" uid="uid://dj10s5c0l6dv6" path="res://Assets/Textures/Ingredients/Stations/Planet.png" id="1_cpdtu"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_bi8o6"]
 
 [resource]
@@ -9,3 +10,4 @@ used_in = 1
 ingredient_type = 1
 ingredient_name = "Planet"
 ingredient_texture = ExtResource("1_8idlr")
+ingredient_station = ExtResource("1_cpdtu")

@@ -9,7 +9,7 @@ signal removed_ingredient (ingredient: Ingredient)
 
 func _ready() -> void:
 	button.text = ingredient_res.ingredient_name
-	button.icon = ingredient_res.ingredient_texture
+	button.icon = ingredient_res.ingredient_station
 	if ingredient_res.ingredient_scene:
 		var scene = ingredient_res.ingredient_scene.instantiate() as Node2D
 		add_child(scene)

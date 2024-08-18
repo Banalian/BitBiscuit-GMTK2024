@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c7mcr1hrlvpu4"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://c7mcr1hrlvpu4"]
 
+[ext_resource type="Texture2D" uid="uid://c4jvklvg7kty0" path="res://Assets/Textures/Ingredients/Stations/MoltenSteel.png" id="1_mcfnx"]
 [ext_resource type="Texture2D" uid="uid://b8wpotc6i7h8i" path="res://Assets/Textures/Ingredients/Bases/MoltenSteel.png" id="1_p0y6j"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_xi1pd"]
 
@@ -9,3 +10,4 @@ used_in = 2
 ingredient_type = 1
 ingredient_name = "Molten Steel"
 ingredient_texture = ExtResource("1_p0y6j")
+ingredient_station = ExtResource("1_mcfnx")

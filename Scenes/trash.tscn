@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv7o36lwhf2h3"]
+[gd_scene load_steps=3 format=3 uid="uid://dv7o36lwhf2h3"]
 
 [ext_resource type="Script" path="res://Scripts/trash.gd" id="1_eiyr5"]
+[ext_resource type="Texture2D" uid="uid://cgxofvkh2qi0n" path="res://Assets/Textures/Ingredients/Stations/TrashCan.png" id="1_llql4"]
 
-[node name="Trash" type="Button" node_paths=PackedStringArray("holder")]
+[node name="Trash" type="Button"]
 offset_left = 214.0
 offset_top = 52.0
 offset_right = 281.0
 offset_bottom = 83.0
 action_mode = 0
 text = "Trash"
+icon = ExtResource("1_llql4")
+icon_alignment = 1
+vertical_icon_alignment = 0
 script = ExtResource("1_eiyr5")
-holder = NodePath("")
 
 [connection signal="pressed" from="." to="." method="_on_trash_tile_pressed"]

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bujymccl3xnsf"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://bujymccl3xnsf"]
 
 [ext_resource type="Texture2D" uid="uid://cms2hgbl420o7" path="res://Assets/Textures/Ingredients/Bases/PinkHorse.png" id="1_o11xn"]
+[ext_resource type="Texture2D" uid="uid://ddhm51rbanb1l" path="res://Assets/Textures/Ingredients/Stations/PinkHorse.png" id="1_uvn2l"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_oc7lo"]
 
 [resource]
@@ -9,3 +10,4 @@ used_in = 1
 ingredient_type = 1
 ingredient_name = "Pink horse"
 ingredient_texture = ExtResource("1_o11xn")
+ingredient_station = ExtResource("1_uvn2l")
