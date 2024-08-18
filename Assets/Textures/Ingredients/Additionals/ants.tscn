@@ -7,6 +7,7 @@ point_count = 4
 [node name="Ants" type="CPUParticles2D"]
 amount = 32
 lifetime = 2.0
+preprocess = 2.0
 randomness = 1.0
 emission_shape = 3
 emission_rect_extents = Vector2(16, 16)
