@@ -1,6 +1,6 @@
 extends Node
 
-signal failed_state(failed_round: Round, failed_round_number: int)
+signal failed_state(failed_round: Round, failed_round_number: int, final_score:int)
 signal started_round(round: Round, round_number: int)
 signal ended_round(round: Round, round_number: int)
 
@@ -15,9 +15,13 @@ signal ended_round(round: Round, round_number: int)
 
 class Round:
 	# Allowed time in second to complete the minimum quota for the round
-	var allowed_time:= 60
+	var allowed_time: float
 	# Minimum amount of order required to complete the Round
-	var order_quota:= 5
+	var order_quota: int
+	
+	func _init(p_allowed_time:= 45.0, p_order_quota:= 2):
+		allowed_time = p_allowed_time
+		order_quota = p_order_quota
 
 var rounds: Array[Round] = []
 
@@ -30,13 +34,12 @@ var _total_completed_order:= 0
 
 func _init() -> void:
 	# UGLY, but do the data init for the rounds here
-	var round1 = Round.new()
-	var round2 = Round.new()
-	round2.order_quota = 15
+	var testRound = Round.new()
+	var round1 = Round.new(60, 5)
+	var round2 = Round.new(80, 10)
+	rounds.append(testRound)
 	rounds.append(round1)
 	rounds.append(round2)
-	rounds.append(Round.new())
-	rounds.append(Round.new())
 
 
 func _ready() -> void:
@@ -58,14 +61,23 @@ func end_round():
 	ended_round.emit(rounds[_current_round], _completed_order)
 	_in_round = false
 	if _completed_order < rounds[_current_round].order_quota:
-		failed_state.emit(rounds[_current_round], _completed_order)
+		print("not enough orders")
+		failed_state.emit(rounds[_current_round], _current_round, _total_completed_order)
 		return
 	_current_round += 1
 	if rounds.size() < _current_round:
 		# Do something about not having enough round
-		pass
+		generate_additional_round()
 	# Start end round timer
 	end_round_timer.start()
+
+
+func generate_additional_round():
+	# take last order, add X quota and X seconds, hopefully making it impossible at some point
+	var old_round := rounds[rounds.size() - 1]
+	var new_time := old_round.allowed_time + 5.0
+	var new_quota := old_round.order_quota + 3
+	rounds.append(Round.new(new_time, new_quota))
 
 
 func _update_label():

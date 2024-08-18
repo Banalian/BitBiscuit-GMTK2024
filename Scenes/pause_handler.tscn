@@ -4,7 +4,7 @@
 
 [node name="PauseHandler" type="Node2D" node_paths=PackedStringArray("_timers")]
 script = ExtResource("1_hd2wo")
-_timers = [NodePath("")]
+_timers = [null]
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -28,6 +28,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
+top_level = true
 layout_mode = 2
 text = "Paused"
 horizontal_alignment = 1

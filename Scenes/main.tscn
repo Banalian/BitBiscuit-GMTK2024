@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://ca53ofrpltb0o"]
+[gd_scene load_steps=39 format=3 uid="uid://ca53ofrpltb0o"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_o11dq"]
 [ext_resource type="PackedScene" uid="uid://djedvt6g0ujyd" path="res://Scenes/client.tscn" id="2_locgf"]
+[ext_resource type="PackedScene" uid="uid://trlnhcw3lqtl" path="res://Scenes/failed_state_handler.tscn" id="3_1v80o"]
 [ext_resource type="PackedScene" uid="uid://2ei4vqct5fgr" path="res://Scenes/client_tile.tscn" id="3_q87b0"]
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="3_xeuuf"]
 [ext_resource type="Resource" uid="uid://cdwrdu3mfv1y5" path="res://Resources/Bases/planet.tres" id="4_ivq56"]
@@ -77,6 +78,13 @@ script = ExtResource("1_o11dq")
 position = Vector2(160, 90)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
+
+[node name="PauseHandler" parent="Camera2D" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
+position = Vector2(-160, -90)
+_timers = [NodePath("../../GameManager/GameTimer/Timer"), NodePath("../../GameManager/StartGameTimer"), NodePath("../../GameManager/EndRoundTimer"), NodePath("../../GameManager/EndOrderTimer")]
+
+[node name="FailedStateHandler" parent="Camera2D" instance=ExtResource("3_1v80o")]
+position = Vector2(-160, -90)
 
 [node name="ViewTop" type="Panel" parent="."]
 clip_contents = true
@@ -473,9 +481,6 @@ position = Vector2(200, 160)
 [node name="OrderDisplay2" parent="GameManager/OrderManager" index="1"]
 position = Vector2(230, 160)
 
-[node name="PauseHandler" parent="." node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
-_timers = [NodePath("../GameManager/GameTimer/Timer"), NodePath("../GameManager/StartGameTimer"), NodePath("../GameManager/EndRoundTimer")]
-
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("22_irysh")]
 position = Vector2(285, 330)
 root_node = NodePath("..")
@@ -496,5 +501,6 @@ texture = ExtResource("23_nlf32")
 
 [connection signal="pressed" from="ViewTop/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
+[connection signal="failed_state" from="GameManager" to="Camera2D/FailedStateHandler" method="_on_game_manager_failed_state"]
 
 [editable path="GameManager"]
