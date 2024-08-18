@@ -7,6 +7,7 @@
 [node name="ClientTile" type="Button"]
 offset_right = 39.0
 offset_bottom = 36.0
+focus_mode = 0
 action_mode = 0
 icon = ExtResource("1_5jjj4")
 icon_alignment = 1

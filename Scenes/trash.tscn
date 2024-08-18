@@ -9,6 +9,7 @@ offset_top = 52.0
 offset_right = 281.0
 offset_bottom = 83.0
 tooltip_text = "Trash"
+focus_mode = 0
 action_mode = 0
 icon = ExtResource("1_llql4")
 icon_alignment = 1

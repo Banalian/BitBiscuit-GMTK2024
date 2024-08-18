@@ -59,3 +59,9 @@ func _on_view_button_pressed() -> void:
 		camera.position.y = 270.0
 	else:
 		camera.position.y = 90.0
+
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_SPACE:
+			_on_view_button_pressed()
