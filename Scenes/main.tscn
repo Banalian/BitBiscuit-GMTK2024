@@ -1,7 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca53ofrpltb0o"]
+[gd_scene load_steps=21 format=3 uid="uid://ca53ofrpltb0o"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_o11dq"]
 [ext_resource type="PackedScene" uid="uid://djedvt6g0ujyd" path="res://Scenes/client.tscn" id="2_locgf"]
+[ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="3_xeuuf"]
+[ext_resource type="Resource" uid="uid://cdwrdu3mfv1y5" path="res://Resources/Bases/planet.tres" id="4_ivq56"]
+[ext_resource type="Resource" uid="uid://bujymccl3xnsf" path="res://Resources/Bases/pink_horse.tres" id="5_l4kwx"]
+[ext_resource type="Resource" uid="uid://bq5v7b0lj8ggw" path="res://Resources/Bases/building.tres" id="6_4q3op"]
+[ext_resource type="Resource" uid="uid://bsd7n5rfbiqst" path="res://Resources/Bases/forest.tres" id="7_clsxh"]
+[ext_resource type="Texture2D" uid="uid://dvjr4hp7mhvu" path="res://Assets/Textures/UI/Shelf.png" id="8_4b7lo"]
+[ext_resource type="Resource" uid="uid://b4d11f5dmdks2" path="res://Resources/Containers/cup.tres" id="9_yssrn"]
+[ext_resource type="Resource" uid="uid://c8amr3r5lgprb" path="res://Resources/Containers/bowl.tres" id="10_58a6e"]
+[ext_resource type="Resource" uid="uid://b2d4ccmmcd2vl" path="res://Resources/Additionals/ant.tres" id="11_ladnu"]
+[ext_resource type="Resource" uid="uid://r1eu2ey3046m" path="res://Resources/Additionals/desert.tres" id="12_kge0h"]
+[ext_resource type="Resource" uid="uid://c7mcr1hrlvpu4" path="res://Resources/Bases/molten_steel.tres" id="13_8lkky"]
+[ext_resource type="Resource" uid="uid://d1jvhuxivkcoe" path="res://Resources/Bases/uranium_juice.tres" id="14_smvgv"]
+[ext_resource type="Resource" uid="uid://p4b25y6w3jws" path="res://Resources/Bases/diethyl_ether.tres" id="15_be7sa"]
+[ext_resource type="Resource" uid="uid://dhe38oi674gn" path="res://Resources/Bases/beer.tres" id="16_b56b8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auejg"]
 bg_color = Color(1, 1, 1, 0)
@@ -162,6 +176,87 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Switch"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewBottom/MarginContainer"]
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="ViewBottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer"]
+layout_mode = 2
+
+[node name="Planet" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("4_ivq56")
+
+[node name="Pink horse" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("5_l4kwx")
+
+[node name="Building" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("6_4q3op")
+
+[node name="Forest" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("7_clsxh")
+
+[node name="TextureRect" type="TextureRect" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer"]
+layout_mode = 2
+texture = ExtResource("8_4b7lo")
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="ViewBottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2"]
+layout_mode = 2
+
+[node name="Cup" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("9_yssrn")
+
+[node name="Bowl" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("10_58a6e")
+
+[node name="Ants" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("11_ladnu")
+
+[node name="Desert" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("12_kge0h")
+
+[node name="TextureRect" type="TextureRect" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer2"]
+layout_mode = 2
+texture = ExtResource("8_4b7lo")
+
+[node name="VSplitContainer3" type="VSplitContainer" parent="ViewBottom/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3"]
+layout_mode = 2
+
+[node name="Molten Steel" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("13_8lkky")
+
+[node name="Uranium Juice" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("14_smvgv")
+
+[node name="Diethyl Ether" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("15_be7sa")
+
+[node name="Beer" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
+layout_mode = 2
+ingredient_res = ExtResource("16_b56b8")
+
+[node name="TextureRect" type="TextureRect" parent="ViewBottom/MarginContainer/VBoxContainer/VSplitContainer3"]
+layout_mode = 2
+texture = ExtResource("8_4b7lo")
 
 [connection signal="pressed" from="ViewTop/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
