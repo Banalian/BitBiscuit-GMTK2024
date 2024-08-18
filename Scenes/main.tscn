@@ -74,17 +74,18 @@ border_color = Color(1, 1, 1, 1)
 [node name="Main" type="Node"]
 script = ExtResource("1_o11dq")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CameraBase" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraBase"]
 position = Vector2(160, 90)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
-[node name="PauseHandler" parent="Camera2D" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
-position = Vector2(-160, -90)
+[node name="PauseHandler" parent="CameraBase" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
 _timers = [NodePath("../../GameManager/GameTimer/Timer"), NodePath("../../GameManager/StartGameTimer"), NodePath("../../GameManager/EndRoundTimer"), NodePath("../../GameManager/EndOrderTimer")]
 
-[node name="FailedStateHandler" parent="Camera2D" instance=ExtResource("3_1v80o")]
-position = Vector2(-160, -90)
+[node name="FailedStateHandler" parent="CameraBase" instance=ExtResource("3_1v80o")]
+z_index = 0
 
 [node name="ViewTop" type="Panel" parent="."]
 clip_contents = true
@@ -100,6 +101,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_auejg")
 
 [node name="BackgroundParticle" type="CPUParticles2D" parent="ViewTop"]
@@ -463,14 +465,11 @@ client = NodePath("..")
 [node name="GameTimer" parent="GameManager" index="0"]
 position = Vector2(253, 10)
 
-[node name="Label" parent="GameManager/GameTimer" index="1"]
-offset_right = 64.0
-
 [node name="OrderNumLabel" parent="GameManager" index="1"]
 offset_left = 253.0
 offset_top = 40.0
-offset_right = 317.0
-offset_bottom = 90.0
+offset_right = 293.0
+offset_bottom = 65.0
 
 [node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
@@ -504,6 +503,6 @@ texture = ExtResource("23_nlf32")
 
 [connection signal="pressed" from="ViewTop/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
-[connection signal="failed_state" from="GameManager" to="Camera2D/FailedStateHandler" method="_on_game_manager_failed_state"]
+[connection signal="failed_state" from="GameManager" to="CameraBase/FailedStateHandler" method="_on_game_manager_failed_state"]
 
 [editable path="GameManager"]

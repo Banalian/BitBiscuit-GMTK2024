@@ -3,7 +3,8 @@ extends Node
 
 var view_shift := false
 
-@onready var camera = $Camera2D
+@onready var camera_base = $CameraBase
+@onready var camera = $CameraBase/Camera2D
 @onready var client = $ViewTop/Client
 @onready var dialogue = $ViewTop/DialogueBackground/DialogueText
 
@@ -12,11 +13,11 @@ var client_tween
 
 
 func _ready() -> void:
-	camera.position.y = -90.0
+	camera_base.position.y = -180.0
 	camera.position_smoothing_enabled = false
 	set_dialogue("")
 	var transition_tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	transition_tween.tween_property(camera, "position", Vector2(160.0, 90.0), 1.0)
+	transition_tween.tween_property(camera_base, "position", Vector2(0.0, 0.0), 1.0)
 	await transition_tween.finished
 	camera.position_smoothing_enabled = true
 
@@ -58,19 +59,19 @@ func end_client() -> float :
 	return 1.0
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Debug1"):
-		add_client()
-	if Input.is_action_just_pressed("Debug2"):
-		remove_client()
+#func _input(event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("Debug1"):
+		#client.randomize()
+	#if Input.is_action_just_pressed("Debug2"):
+		#set_dialogue(client.get_dialogue(1, ["ASDF", "dessert??"]))
 
 
 func _on_view_button_pressed() -> void:
 	view_shift = not view_shift
 	if view_shift:
-		camera.position.y = 270.0
+		camera_base.position.y = 180.0
 	else:
-		camera.position.y = 90.0
+		camera_base.position.y = 0.0
 
 
 func _unhandled_input(event):
