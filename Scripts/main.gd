@@ -1,3 +1,4 @@
+class_name Main
 extends Node
 
 var view_shift := false
@@ -44,6 +45,17 @@ func remove_client() -> void:
 		client_tween.kill()
 	var client_tween = create_tween().set_trans(client.tween_type).set_ease(Tween.EASE_IN)
 	client_tween.tween_property(client, "position", Vector2(-160.0, 49.0), 1.0)
+
+
+func start_client(mixes: Array[Mix]):
+	add_client()
+	set_dialogue("Henlo")
+
+# returns the amount of time the whole end sequence will take
+func end_client() -> float :
+	remove_client()
+	set_dialogue("ByeBye")
+	return 1.0
 
 
 func _input(event: InputEvent) -> void:

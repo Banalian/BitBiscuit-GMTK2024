@@ -37,8 +37,9 @@ func try_take_mix():
 
 
 func erase_mix():
-	client_mix = null
-	client_mix_changed.emit(client_mix)
+	if client_mix:
+		client_mix = null
+		client_mix_changed.emit(client_mix)
 
 
 func _on_client_tile_pressed():

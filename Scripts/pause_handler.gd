@@ -24,5 +24,5 @@ func toggle_pause():
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
+		if event.keycode == KEY_ESCAPE or event.keycode == KEY_P:
 			toggle_pause()

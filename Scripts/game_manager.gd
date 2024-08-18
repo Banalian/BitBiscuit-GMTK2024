@@ -4,10 +4,14 @@ signal failed_state(failed_round: Round, failed_round_number: int)
 signal started_round(round: Round, round_number: int)
 signal ended_round(round: Round, round_number: int)
 
-@export var game_timer: GameTimer
-@export var order_generator: OrderGenerator
-@export var order_manager: OrderManager
-@export var order_num_label: Label
+@onready var game_timer: GameTimer = $GameTimer
+@onready var end_round_timer: Timer = $EndRoundTimer
+@onready var end_order_timer: Timer = $EndOrderTimer
+@onready var start_game_timer: Timer = $StartGameTimer
+@onready var order_generator: OrderGenerator = $OrderGenerator
+@onready var order_manager: OrderManager= $OrderManager
+@onready var order_num_label: Label = $OrderNumLabel
+@export var client: Main
 
 class Round:
 	# Allowed time in second to complete the minimum quota for the round
@@ -36,7 +40,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	start_round(rounds[_current_round])
+	start_game_timer.start()
 
 
 func start_round(new_round: Round):
@@ -44,6 +48,7 @@ func start_round(new_round: Round):
 	_in_round = true
 	game_timer.start_timer(new_round.allowed_time)
 	var mixes = order_generator.generate_mixes()
+	client.start_client(mixes)
 	order_manager.setup_order(mixes)
 	_update_label()
 	started_round.emit(rounds[_current_round], _completed_order)
@@ -57,9 +62,10 @@ func end_round():
 		return
 	_current_round += 1
 	if rounds.size() < _current_round:
-		#do something about not having enough round
+		# Do something about not having enough round
 		pass
-	start_round(rounds[_current_round])
+	# Start end round timer
+	end_round_timer.start()
 
 
 func _update_label():
@@ -71,10 +77,24 @@ func _update_label():
 func _on_order_completed():
 	_completed_order += 1
 	_total_completed_order += 1
-	var mixes = order_generator.generate_mixes()
-	order_manager.setup_order(mixes)
-	_update_label()
+	end_order_timer.start(client.end_client())
 
 
 func _on_timer_end():
 	end_round()
+
+
+func _on_end_order_timer_timeout() -> void:
+	var mixes = order_generator.generate_mixes()
+	client.start_client(mixes)
+	order_manager.setup_order(mixes)
+	_update_label()
+
+
+func _on_wait_timer_end():
+	if _in_round:
+		start_round(rounds[_current_round])
+
+
+func _on_start_game_timer_timeout() -> void:
+	start_round(rounds[_current_round])
