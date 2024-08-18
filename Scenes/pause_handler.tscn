@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/pause_handler.gd" id="1_hd2wo"]
 
 [node name="PauseHandler" type="Node2D" node_paths=PackedStringArray("_timers")]
+z_index = 9
 script = ExtResource("1_hd2wo")
 _timers = [null]
 

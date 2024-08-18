@@ -10,7 +10,7 @@ signal ended_round(round: Round, round_number: int)
 @onready var start_game_timer: Timer = $StartGameTimer
 @onready var order_generator: OrderGenerator = $OrderGenerator
 @onready var order_manager: OrderManager= $OrderManager
-@onready var order_num_label: Label = $OrderNumLabel
+@onready var order_num_label: RichTextLabel = $OrderNumLabel
 @export var client: Main
 
 class Round:

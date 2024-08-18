@@ -16,11 +16,11 @@ script = ExtResource("2_jpp0i")
 [node name="Timer" type="Timer" parent="GameTimer"]
 one_shot = true
 
-[node name="Label" type="Label" parent="GameTimer"]
+[node name="Label" type="RichTextLabel" parent="GameTimer"]
 offset_right = 40.0
 offset_bottom = 25.0
 
-[node name="OrderNumLabel" type="Label" parent="."]
+[node name="OrderNumLabel" type="RichTextLabel" parent="."]
 offset_left = 149.0
 offset_top = 114.0
 offset_right = 189.0

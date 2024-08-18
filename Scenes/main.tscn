@@ -463,11 +463,14 @@ client = NodePath("..")
 [node name="GameTimer" parent="GameManager" index="0"]
 position = Vector2(253, 10)
 
+[node name="Label" parent="GameManager/GameTimer" index="1"]
+offset_right = 64.0
+
 [node name="OrderNumLabel" parent="GameManager" index="1"]
 offset_left = 253.0
 offset_top = 40.0
-offset_right = 293.0
-offset_bottom = 65.0
+offset_right = 317.0
+offset_bottom = 90.0
 
 [node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
