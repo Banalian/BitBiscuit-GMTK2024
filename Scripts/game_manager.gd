@@ -60,6 +60,7 @@ func start_round(new_round: Round):
 	game_timer.start_timer(new_round.allowed_time)
 	var mixes = order_generator.generate_mixes()
 	_tmp_order = mixes
+	game_timer.pause_timer()
 	start_order_timer.start(client.start_client(mixes))
 	started_round.emit(rounds[_current_round], _completed_order)
 
@@ -98,6 +99,7 @@ func _on_order_completed():
 	_completed_order += 1
 	_total_completed_order += 1
 	order_manager.clear_order()
+	game_timer.pause_timer()
 	end_order_timer.start(client.end_client())
 
 # game timer ended, time to start ending the round
@@ -113,6 +115,7 @@ func _on_end_order_timer_timeout() -> void:
 func _start_actual_order() -> void:
 	if _tmp_order.size() >= 1:
 		order_manager.setup_order(_tmp_order)
+		game_timer.resume_timer()
 		_tmp_order = []
 
 # round end timer

@@ -13,3 +13,9 @@ func _process(delta: float) -> void:
 func start_timer(time:= -1.0):
 	# start timer with base time if none give, else we use the given time
 	$Timer.start(base_time if time < 0.0 else time )
+
+func pause_timer():
+	$Timer.paused = true
+	
+func resume_timer():
+	$Timer.paused = false
