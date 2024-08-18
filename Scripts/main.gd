@@ -11,7 +11,13 @@ var client_tween
 
 
 func _ready() -> void:
-	set_dialogue("This is a test!")
+	camera.position.y = -90.0
+	camera.position_smoothing_enabled = false
+	set_dialogue("")
+	var transition_tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	transition_tween.tween_property(camera, "position", Vector2(160.0, 90.0), 1.0)
+	await transition_tween.finished
+	camera.position_smoothing_enabled = true
 
 
 func set_dialogue(text) -> void:

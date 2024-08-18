@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var game_logo_top = $GameLogo/GameLogoTop
 @onready var game_logo_bottom = $GameLogo/GameLogoBottom
+@onready var camera = $Camera2D
 
 
 func _process(delta: float) -> void:
@@ -9,6 +10,9 @@ func _process(delta: float) -> void:
 
 
 func _on_button_play_pressed() -> void:
+	var transition_tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	transition_tween.tween_property(camera, "position", Vector2(160.0, 270.0), 1.0)
+	await transition_tween.finished
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 
