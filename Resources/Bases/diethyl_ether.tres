@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_7yjg3")
-used_in = 1
+used_in = 2
 ingredient_type = 1
 ingredient_name = "Diethyl Ether"
 ingredient_texture = ExtResource("1_fss71")

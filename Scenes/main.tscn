@@ -82,10 +82,12 @@ position = Vector2(160, 90)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
 
-[node name="PauseHandler" parent="CameraBase" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
-_timers = [NodePath("../../GameManager/GameTimer/Timer"), NodePath("../../GameManager/StartGameTimer"), NodePath("../../GameManager/EndRoundTimer"), NodePath("../../GameManager/EndOrderTimer")]
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraBase"]
 
-[node name="FailedStateHandler" parent="CameraBase" instance=ExtResource("3_1v80o")]
+[node name="PauseHandler" parent="CameraBase/CanvasLayer" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
+_timers = [NodePath("../../../GameManager/GameTimer/Timer"), NodePath("../../../GameManager/StartGameTimer"), NodePath("../../../GameManager/EndRoundTimer"), NodePath("../../../GameManager/EndOrderTimer")]
+
+[node name="FailedStateHandler" parent="CameraBase/CanvasLayer" instance=ExtResource("3_1v80o")]
 
 [node name="ViewTop" type="Panel" parent="."]
 clip_contents = true
@@ -495,6 +497,6 @@ texture = ExtResource("23_nlf32")
 
 [connection signal="pressed" from="ViewTop/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
-[connection signal="failed_state" from="GameManager" to="CameraBase/FailedStateHandler" method="_on_game_manager_failed_state"]
+[connection signal="failed_state" from="GameManager" to="CameraBase/CanvasLayer/FailedStateHandler" method="_on_game_manager_failed_state"]
 
 [editable path="GameManager"]
