@@ -67,6 +67,7 @@ func start_round(new_round: Round):
 func end_round():
 	ended_round.emit(rounds[_current_round], _completed_order)
 	_in_round = false
+	order_manager.clear_order()
 	if _completed_order < rounds[_current_round].order_quota:
 		print("not enough orders")
 		failed_state.emit(rounds[_current_round], _current_round, _total_completed_order)
@@ -116,7 +117,7 @@ func _start_actual_order() -> void:
 
 # round end timer
 func _on_wait_timer_end():
-	if _in_round:
+	if not _in_round:
 		start_round(rounds[_current_round])
 
 
