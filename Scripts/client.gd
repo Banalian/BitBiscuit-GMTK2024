@@ -78,7 +78,7 @@ func randomize() -> void:
 	eyes.frame = randi() % 8
 	mouth.frame = randi() % 8
 	hat.frame = randi() % 8
-	personality = "hyper"
+	personality = PERSONALITIES.pick_random()
 
 # Type 0 is intro, 1 is order, 2 is the thanks, then 3 is the goodbye
 func get_dialogue(type: int, order	: Array[Mix] = [null, null]):
