@@ -78,10 +78,10 @@ func randomize() -> void:
 	eyes.frame = randi() % 8
 	mouth.frame = randi() % 8
 	hat.frame = randi() % 8
-	personality = PERSONALITIES.pick_random()
+	personality = "hyper"
 
-# Type 1 is intro, 2 is order, 3 is the thanks, then 4 is the goodby
-func get_dialogue(type: int, order: Array[Mix] = [null, null]):
+# Type 0 is intro, 1 is order, 2 is the thanks, then 3 is the goodbye
+func get_dialogue(type: int, order	: Array[Mix] = [null, null]):
 	var text = ""
 	var index = 0
 	var variation = randi() % dialogues[personality][type].size()
@@ -89,10 +89,24 @@ func get_dialogue(type: int, order: Array[Mix] = [null, null]):
 		# no iterating to allow for custom text
 		text += dialogues[personality][type][variation][0]
 		if order.size() > 0 and order[0]:
-			text += order[0].to_order_string(true if personality == "hyper" else false)
+			#text += order[0].to_order_string(true if personality == "hyper" else false)
+			match personality:
+				"bored":
+					text += order[0].to_order_string(1)
+				"hyper":
+					text += order[0].to_order_string(2)
+				_:
+					text += order[0].to_order_string(0)
 		if order.size() > 1 and order[1]:
 			text += dialogues[personality][type][variation][1]
-			text += order[1].to_order_string(true if personality == "hyper" else false)
+			#text += order[1].to_order_string(true if personality == "hyper" else false)
+			match personality:
+				"bored":
+					text += order[0].to_order_string(1)
+				"hyper":
+					text += order[0].to_order_string(2)
+				_:
+					text += order[0].to_order_string(0)
 		text += dialogues[personality][type][variation][2]
 		return text
 	else:

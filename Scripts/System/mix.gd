@@ -67,7 +67,7 @@ func clear():
 
 
 # manual to string function
-func to_order_string(in_uppercase: bool):
+func to_order_string(casing := 0):
 	var container: Ingredient = _content.get_or_add(Constants.IngredientType.CONTAINER, null)
 	var base: Ingredient = _content.get_or_add(Constants.IngredientType.BASE, null)
 	var additional: Ingredient = _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
@@ -78,4 +78,11 @@ func to_order_string(in_uppercase: bool):
 		final += base.ingredient_name
 	if additional:
 		final += _possible_link[(randi() % _possible_link.size())] + additional.ingredient_name
-	return final.to_upper() if in_uppercase else final
+	match casing:
+		0:
+			return final
+		1:
+			return final.to_lower()
+		2:
+			return final.to_upper()
+	#return final.to_upper() if in_uppercase else final
