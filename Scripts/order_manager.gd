@@ -25,18 +25,28 @@ func setup_order(mixes: Array[Mix]):
 	setup_displayers()
 	pass
 
-
+func clear_order():
+	clear_client_tiles()
+	clear_displayers()
+	_current_order = []
+	
 func setup_displayers():
-	mix_displayer1.clear_mix()
-	mix_displayer2.clear_mix()
+	clear_displayers()
 	if _current_order.size() >= 1 :
 		mix_displayer1.set_mix(_current_order[0])
 	if _current_order.size() >= 2 :
 		mix_displayer2.set_mix(_current_order[1])
 
 
+func clear_displayers():
+	mix_displayer1.clear_mix()
+	mix_displayer2.clear_mix()
+
+
 func check_orders_state():
 	print("checking order state")
+	if _current_order.size() == 0:
+		return
 	_checking = true
 	var correct_mix:= 0
 	for order in _current_order:
@@ -59,7 +69,7 @@ func clear_client_tiles():
 
 
 func _on_mix_changed(_mix: Mix):
-	if not _checking:
+	if not _checking and _current_order.size() > 0:
 		# Prevents a stack overflow because somehow only sometimes we end up in a stack overflow when checking and clearing stuff
 		check_orders_state()
 

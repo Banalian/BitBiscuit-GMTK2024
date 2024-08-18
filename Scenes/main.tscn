@@ -85,7 +85,7 @@ position_smoothing_speed = 12.0
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraBase"]
 
 [node name="PauseHandler" parent="CameraBase/CanvasLayer" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
-_timers = [NodePath("../../../GameManager/GameTimer/Timer"), NodePath("../../../GameManager/StartGameTimer"), NodePath("../../../GameManager/EndRoundTimer"), NodePath("../../../GameManager/EndOrderTimer")]
+_timers = [NodePath("../../../GameManager/CanvasLayer/GameTimer/Timer"), NodePath("../../../GameManager/StartGameTimer"), NodePath("../../../GameManager/EndRoundTimer"), NodePath("../../../GameManager/EndOrderTimer")]
 
 [node name="FailedStateHandler" parent="CameraBase/CanvasLayer" instance=ExtResource("3_1v80o")]
 
@@ -126,6 +126,8 @@ color_ramp = SubResource("Gradient_ocy7v")
 
 [node name="Client" parent="ViewTop" instance=ExtResource("2_locgf")]
 position = Vector2(249, 49)
+
+[node name="NextDialogueTimer" type="Timer" parent="ViewTop"]
 
 [node name="DialogueBackground" type="Panel" parent="ViewTop"]
 custom_minimum_size = Vector2(0, 81)
@@ -450,23 +452,10 @@ holder = NodePath("../../Holder")
 [node name="GameManager" parent="." node_paths=PackedStringArray("client") instance=ExtResource("18_2d58t")]
 client = NodePath("..")
 
-[node name="GameTimer" parent="GameManager" index="0"]
-position = Vector2(253, 10)
-
-[node name="Label" parent="GameManager/GameTimer" index="1"]
-offset_right = 64.0
-offset_bottom = 28.0
-
-[node name="OrderNumLabel" parent="GameManager" index="1"]
-offset_left = 253.0
-offset_top = 40.0
-offset_right = 318.0
-offset_bottom = 108.0
-
-[node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
+[node name="OrderGenerator" parent="GameManager" index="1" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
 
-[node name="OrderManager" parent="GameManager" index="3" node_paths=PackedStringArray("root_node")]
+[node name="OrderManager" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
 
 [node name="OrderDisplay1" parent="GameManager/OrderManager" index="0"]
@@ -495,6 +484,7 @@ texture = ExtResource("23_nlf32")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="timeout" from="ViewTop/NextDialogueTimer" to="." method="_on_next_dialogue_timer_timeout"]
 [connection signal="pressed" from="ViewTop/DialogueBackground/MarginContainer/VBoxContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="failed_state" from="GameManager" to="CameraBase/CanvasLayer/FailedStateHandler" method="_on_game_manager_failed_state"]

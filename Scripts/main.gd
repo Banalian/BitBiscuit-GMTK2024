@@ -7,11 +7,15 @@ var view_shift := false
 @onready var camera = $CameraBase/Camera2D
 @onready var client = $ViewTop/Client
 @onready var dialogue = $ViewTop/DialogueBackground/MarginContainer/VBoxContainer/DialogueText
+@onready var next_dialogue_timer = $ViewTop/NextDialogueTimer
 @onready var audio_stream = $AudioStreamPlayer
 
 var dialogue_tween
 var client_tween
 
+# contains strings
+var _dialogue_list:= []
+var _current_dialogue:= 0
 
 func _ready() -> void:
 	camera_base.position.y = -180.0
@@ -48,17 +52,37 @@ func remove_client() -> void:
 	var client_tween = create_tween().set_trans(client.tween_type).set_ease(Tween.EASE_IN)
 	client_tween.tween_property(client, "position", Vector2(-160.0, 49.0), 0.8)
 
-
-func start_client(mixes: Array[Mix]):
+# returns the amount of time the whole start sequence will take
+func start_client(mixes: Array[Mix]) -> float :
+	_dialogue_list = []
+	_current_dialogue = 0
 	add_client()
 	client.randomize()
+	_dialogue_list.append(client.get_dialogue(0))
+	_dialogue_list.append(client.get_dialogue(1, mixes))
 	set_dialogue(client.get_dialogue(0))
+	next_dialogue_timer.stop()
+	next_dialogue_timer.start()
+	return 1.0 # only an estimation
 
 # returns the amount of time the whole end sequence will take
 func end_client() -> float :
+	_dialogue_list = []
+	_current_dialogue = 0
 	remove_client()
-	set_dialogue(client.get_dialogue(3))
-	return 1.0
+	_dialogue_list.append(client.get_dialogue(2))
+	_dialogue_list.append(client.get_dialogue(3))
+	set_dialogue(_dialogue_list[_current_dialogue])
+	next_dialogue_timer.stop()
+	next_dialogue_timer.start()
+	return 2.0
+
+
+func _on_next_dialogue_timer_timeout() -> void:
+	_current_dialogue += 1
+	if (_current_dialogue) < _dialogue_list.size():
+		set_dialogue(_dialogue_list[_current_dialogue])
+		next_dialogue_timer.start()
 
 
 #func _input(event: InputEvent) -> void:

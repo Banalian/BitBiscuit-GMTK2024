@@ -9,22 +9,25 @@
 [node name="GameManager" type="Node"]
 script = ExtResource("1_822bj")
 
-[node name="GameTimer" type="Node2D" parent="."]
-position = Vector2(151, 82)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameTimer" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("2_jpp0i")
 
-[node name="Timer" type="Timer" parent="GameTimer"]
+[node name="Timer" type="Timer" parent="CanvasLayer/GameTimer"]
 one_shot = true
 
-[node name="Label" type="RichTextLabel" parent="GameTimer"]
-offset_right = 40.0
-offset_bottom = 25.0
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/GameTimer"]
+offset_left = 250.0
+offset_top = 10.0
+offset_right = 315.0
+offset_bottom = 35.0
 
-[node name="OrderNumLabel" type="RichTextLabel" parent="."]
-offset_left = 149.0
-offset_top = 114.0
-offset_right = 189.0
-offset_bottom = 139.0
+[node name="OrderNumLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 250.0
+offset_top = 40.0
+offset_right = 315.0
+offset_bottom = 115.0
 
 [node name="OrderGenerator" type="Node" parent="."]
 script = ExtResource("3_75lou")
@@ -46,11 +49,15 @@ one_shot = true
 [node name="EndOrderTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="StartOrderTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="StartGameTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="GameTimer/Timer" to="." method="_on_timer_end"]
+[connection signal="timeout" from="CanvasLayer/GameTimer/Timer" to="." method="_on_timer_end"]
 [connection signal="order_completed" from="OrderManager" to="." method="_on_order_completed"]
 [connection signal="timeout" from="EndRoundTimer" to="." method="_on_wait_timer_end"]
 [connection signal="timeout" from="EndOrderTimer" to="." method="_on_end_order_timer_timeout"]
+[connection signal="timeout" from="StartOrderTimer" to="." method="_start_actual_order"]
 [connection signal="timeout" from="StartGameTimer" to="." method="_on_start_game_timer_timeout"]

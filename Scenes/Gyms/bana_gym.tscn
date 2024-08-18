@@ -131,10 +131,10 @@ ingredient_res = ExtResource("8_lx8mu")
 
 [node name="GameManager" parent="." instance=ExtResource("10_nlac0")]
 
-[node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
+[node name="OrderGenerator" parent="GameManager" index="1" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
 
-[node name="OrderManager" parent="GameManager" index="3" node_paths=PackedStringArray("root_node")]
+[node name="OrderManager" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
 
 [node name="PauseHandler" parent="." instance=ExtResource("15_v72wu")]

@@ -4,6 +4,7 @@ class_name Mix
 var _content: Dictionary = {}
 var _type: Constants.MixType
 
+var _possible_link = [" With a bit of ", " With a sprinkle of "]
 
 # Returns true if the ingredient was accepted, false otherwise
 func add(ingredient: Ingredient):
@@ -63,3 +64,18 @@ func equals(other_mix: Mix):
 
 func clear():
 	_content = {}
+
+
+# manual to string function
+func to_order_string(in_uppercase: bool):
+	var container: Ingredient = _content.get_or_add(Constants.IngredientType.CONTAINER, null)
+	var base: Ingredient = _content.get_or_add(Constants.IngredientType.BASE, null)
+	var additional: Ingredient = _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
+	var final = ""
+	if container:
+		final += container.ingredient_name + " Of "
+	if base:
+		final += base.ingredient_name
+	if additional:
+		final += _possible_link[(randi() % _possible_link.size())] + additional.ingredient_name
+	return final.to_upper() if in_uppercase else final

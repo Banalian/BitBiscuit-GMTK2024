@@ -4,13 +4,14 @@ signal failed_state(failed_round: Round, failed_round_number: int, final_score:i
 signal started_round(round: Round, round_number: int)
 signal ended_round(round: Round, round_number: int)
 
-@onready var game_timer: GameTimer = $GameTimer
+@onready var game_timer: GameTimer = $CanvasLayer/GameTimer
 @onready var end_round_timer: Timer = $EndRoundTimer
 @onready var end_order_timer: Timer = $EndOrderTimer
+@onready var start_order_timer: Timer = $StartOrderTimer
 @onready var start_game_timer: Timer = $StartGameTimer
 @onready var order_generator: OrderGenerator = $OrderGenerator
 @onready var order_manager: OrderManager= $OrderManager
-@onready var order_num_label: RichTextLabel = $OrderNumLabel
+@onready var order_num_label: RichTextLabel = $CanvasLayer/OrderNumLabel
 @export var client: Main
 
 class Round:
@@ -31,6 +32,9 @@ var _current_round:= 0
 var _completed_order:= 0
 var _total_completed_order:= 0
 
+#Use to transfer the orders between the order starting (client coming) and it really starting
+var _tmp_order: Array[Mix]
+
 
 func _init() -> void:
 	# UGLY, but do the data init for the rounds here
@@ -46,14 +50,17 @@ func _ready() -> void:
 	start_game_timer.start()
 
 
+func _process(_delta: float) -> void:
+	_update_label()
+
+
 func start_round(new_round: Round):
 	_completed_order = 0
 	_in_round = true
 	game_timer.start_timer(new_round.allowed_time)
 	var mixes = order_generator.generate_mixes()
-	client.start_client(mixes)
-	order_manager.setup_order(mixes)
-	_update_label()
+	_tmp_order = mixes
+	start_order_timer.start(client.start_client(mixes))
 	started_round.emit(rounds[_current_round], _completed_order)
 
 
@@ -89,20 +96,25 @@ func _update_label():
 func _on_order_completed():
 	_completed_order += 1
 	_total_completed_order += 1
+	order_manager.clear_order()
 	end_order_timer.start(client.end_client())
 
-
+# game timer ended, time to start ending the round
 func _on_timer_end():
 	end_round()
 
-
+# Start a new order in the round
 func _on_end_order_timer_timeout() -> void:
 	var mixes = order_generator.generate_mixes()
-	client.start_client(mixes)
-	order_manager.setup_order(mixes)
-	_update_label()
+	_tmp_order = mixes
+	start_order_timer.start(client.start_client(mixes))
 
+func _start_actual_order() -> void:
+	if _tmp_order.size() >= 1:
+		order_manager.setup_order(_tmp_order)
+		_tmp_order = []
 
+# round end timer
 func _on_wait_timer_end():
 	if _in_round:
 		start_round(rounds[_current_round])
