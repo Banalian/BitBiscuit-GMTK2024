@@ -9,28 +9,37 @@ _timers = [null]
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
-top_level = true
+z_index = 9
 offset_right = 320.0
 offset_bottom = 180.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+z_index = 9
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -20.0
-offset_right = 30.0
-offset_bottom = 20.0
+offset_left = -140.0
+offset_top = -55.0
+offset_right = 140.0
+offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer"]
-top_level = true
+z_index = 9
 layout_mode = 2
 text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer"]
+z_index = 9
+layout_mode = 2
+text = "Escape/P to unpause"
 horizontal_alignment = 1
 vertical_alignment = 1
