@@ -38,11 +38,6 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Play"
 
-[node name="ButtonQuit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "Quit"
-
 [node name="ButtonGMTK" type="Button" parent="."]
 offset_top = 140.0
 offset_right = 40.0
@@ -62,5 +57,4 @@ gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_y5kaq")
 
 [connection signal="pressed" from="VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="ButtonGMTK" to="." method="_on_button_gmtk_pressed"]
