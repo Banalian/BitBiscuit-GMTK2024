@@ -16,6 +16,7 @@ var client_tween
 # contains strings
 var _dialogue_list:= []
 var _current_dialogue:= 0
+var _make_leave_at_end:= false
 
 func _ready() -> void:
 	camera_base.position.y = -180.0
@@ -58,6 +59,7 @@ func start_client(mixes: Array[Mix]) -> float :
 	_current_dialogue = 0
 	add_client()
 	client.randomize()
+	_make_leave_at_end = false
 	_dialogue_list.append(client.get_dialogue(0))
 	_dialogue_list.append(client.get_dialogue(1, mixes))
 	set_dialogue(client.get_dialogue(0))
@@ -69,7 +71,7 @@ func start_client(mixes: Array[Mix]) -> float :
 func end_client() -> float :
 	_dialogue_list = []
 	_current_dialogue = 0
-	remove_client()
+	_make_leave_at_end = true
 	_dialogue_list.append(client.get_dialogue(2))
 	_dialogue_list.append(client.get_dialogue(3))
 	set_dialogue(_dialogue_list[_current_dialogue])
@@ -80,9 +82,11 @@ func end_client() -> float :
 
 func _on_next_dialogue_timer_timeout() -> void:
 	_current_dialogue += 1
-	if (_current_dialogue) < _dialogue_list.size():
+	if _current_dialogue < _dialogue_list.size():
 		set_dialogue(_dialogue_list[_current_dialogue])
 		next_dialogue_timer.start()
+	if _make_leave_at_end and _current_dialogue == (_dialogue_list.size()-1):
+		remove_client()
 
 
 #func _input(event: InputEvent) -> void:
