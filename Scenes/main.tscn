@@ -85,7 +85,7 @@ position_smoothing_speed = 12.0
 [node name="CanvasLayer" type="CanvasLayer" parent="CameraBase"]
 
 [node name="PauseHandler" parent="CameraBase/CanvasLayer" node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
-_timers = [NodePath("../../../GameManager/CanvasLayer/GameTimer/Timer"), NodePath("../../../GameManager/StartGameTimer"), NodePath("../../../GameManager/EndRoundTimer"), NodePath("../../../GameManager/EndOrderTimer")]
+_timers = [NodePath("../../../GameManager/CanvasLayer/GameTimer/Timer"), NodePath("../../../GameManager/EndRoundTimer"), NodePath("../../../GameManager/EndOrderTimer"), NodePath("../../../GameManager/StartOrderTimer"), NodePath("../../../GameManager/StartGameTimer"), NodePath("../../../ViewTop/NextDialogueTimer")]
 
 [node name="FailedStateHandler" parent="CameraBase/CanvasLayer" instance=ExtResource("3_1v80o")]
 
