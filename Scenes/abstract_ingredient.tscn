@@ -20,3 +20,5 @@ icon = ExtResource("1_7heh8")
 icon_alignment = 1
 vertical_icon_alignment = 0
 script = ExtResource("1_oeb5v")
+
+[connection signal="gui_input" from="." to="." method="_on_Button_gui_input"]

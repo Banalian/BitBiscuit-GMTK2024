@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://ca53ofrpltb0o"]
+[gd_scene load_steps=38 format=3 uid="uid://ca53ofrpltb0o"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_o11dq"]
 [ext_resource type="PackedScene" uid="uid://djedvt6g0ujyd" path="res://Scenes/client.tscn" id="2_locgf"]
+[ext_resource type="PackedScene" uid="uid://2ei4vqct5fgr" path="res://Scenes/client_tile.tscn" id="3_q87b0"]
 [ext_resource type="PackedScene" uid="uid://yjttqehhf2w4" path="res://Scenes/abstract_ingredient.tscn" id="3_xeuuf"]
 [ext_resource type="Resource" uid="uid://cdwrdu3mfv1y5" path="res://Resources/Bases/planet.tres" id="4_ivq56"]
 [ext_resource type="Texture2D" uid="uid://dj10s5c0l6dv6" path="res://Assets/Textures/Ingredients/Stations/Planet.png" id="4_kfe4g"]
@@ -17,6 +18,11 @@
 [ext_resource type="Resource" uid="uid://d1jvhuxivkcoe" path="res://Resources/Bases/uranium_juice.tres" id="14_smvgv"]
 [ext_resource type="Resource" uid="uid://p4b25y6w3jws" path="res://Resources/Bases/diethyl_ether.tres" id="15_be7sa"]
 [ext_resource type="Resource" uid="uid://dhe38oi674gn" path="res://Resources/Bases/beer.tres" id="16_b56b8"]
+[ext_resource type="PackedScene" uid="uid://dvrjdtpd7bw4n" path="res://Scenes/game_manager.tscn" id="18_2d58t"]
+[ext_resource type="PackedScene" uid="uid://dv7o36lwhf2h3" path="res://Scenes/trash.tscn" id="18_qmnna"]
+[ext_resource type="PackedScene" uid="uid://52sp7r23y60o" path="res://Scenes/pause_handler.tscn" id="19_c7j6o"]
+[ext_resource type="PackedScene" uid="uid://u3lfp7bvh8v6" path="res://Scenes/mix_holder.tscn" id="22_irysh"]
+[ext_resource type="Texture2D" uid="uid://bd1lr63p43a63" path="res://Assets/Textures/UI/ItemFrame.png" id="23_nlf32"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auejg"]
 bg_color = Color(1, 1, 1, 0)
@@ -181,6 +187,22 @@ grow_vertical = 2
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_auejg")
 
+[node name="ClientTile" parent="ViewBottom" node_paths=PackedStringArray("holder") instance=ExtResource("3_q87b0")]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 5.0
+offset_right = 141.0
+offset_bottom = 41.0
+holder = NodePath("../../Holder")
+
+[node name="ClientTile2" parent="ViewBottom" node_paths=PackedStringArray("holder") instance=ExtResource("3_q87b0")]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 41.0
+holder = NodePath("../../Holder")
+
 [node name="MarginContainer" type="MarginContainer" parent="ViewBottom"]
 layout_mode = 1
 anchors_preset = 15
@@ -217,6 +239,7 @@ theme_override_constants/margin_bottom = -7
 [node name="VBoxContainer" type="VBoxContainer" parent="ViewBottom/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_constants/separation = -6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ViewBottom/MarginContainer2/VBoxContainer"]
@@ -416,5 +439,59 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_auejg")
 
+[node name="Trash" parent="ViewBottom" node_paths=PackedStringArray("holder") instance=ExtResource("18_qmnna")]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 41.0
+offset_bottom = 36.0
+holder = NodePath("../../Holder")
+
+[node name="GameManager" parent="." instance=ExtResource("18_2d58t")]
+
+[node name="GameTimer" parent="GameManager" index="0"]
+position = Vector2(253, 10)
+
+[node name="OrderNumLabel" parent="GameManager" index="1"]
+offset_left = 253.0
+offset_top = 40.0
+offset_right = 293.0
+offset_bottom = 65.0
+
+[node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
+root_node = NodePath("../..")
+
+[node name="OrderManager" parent="GameManager" index="3" node_paths=PackedStringArray("root_node")]
+root_node = NodePath("../..")
+
+[node name="OrderDisplay1" parent="GameManager/OrderManager" index="0"]
+position = Vector2(200, 160)
+
+[node name="OrderDisplay2" parent="GameManager/OrderManager" index="1"]
+position = Vector2(230, 160)
+
+[node name="PauseHandler" parent="." node_paths=PackedStringArray("_timers") instance=ExtResource("19_c7j6o")]
+_timers = [NodePath("../GameManager/GameTimer/Timer")]
+
+[node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("22_irysh")]
+position = Vector2(285, 330)
+root_node = NodePath("..")
+
+[node name="TextureRect" type="TextureRect" parent="Holder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("23_nlf32")
+
 [connection signal="pressed" from="ViewTop/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
+
+[editable path="GameManager"]

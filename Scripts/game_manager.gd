@@ -11,9 +11,9 @@ signal ended_round(round: Round, round_number: int)
 
 class Round:
 	# Allowed time in second to complete the minimum quota for the round
-	var allowed_time:= 15.0
+	var allowed_time:= 60
 	# Minimum amount of order required to complete the Round
-	var order_quota:= 2
+	var order_quota:= 5
 
 var rounds: Array[Round] = []
 
@@ -25,9 +25,10 @@ var _total_completed_order:= 0
 
 
 func _init() -> void:
+	# UGLY, but do the data init for the rounds here
 	var round1 = Round.new()
 	var round2 = Round.new()
-	round2.order_quota = 3
+	round2.order_quota = 15
 	rounds.append(round1)
 	rounds.append(round2)
 	rounds.append(Round.new())
@@ -38,10 +39,10 @@ func _ready() -> void:
 	start_round(rounds[_current_round])
 
 
-func start_round(round: Round):
+func start_round(new_round: Round):
 	_completed_order = 0
 	_in_round = true
-	game_timer.start_timer(round.allowed_time)
+	game_timer.start_timer(new_round.allowed_time)
 	var mixes = order_generator.generate_mixes()
 	order_manager.setup_order(mixes)
 	_update_label()

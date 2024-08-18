@@ -85,7 +85,7 @@ func _get_random_ing_in_array(array: Array):
 # Get ingredients available in the current level to determine what can be done
 func _get_available_ingredients():
 	var ingredients := []
-	for child in root_node.get_children():
+	for child in root_node.find_children("*", "IngredientButton"):
 		if child is IngredientButton:
 			ingredients.append(child.ingredient_res as Ingredient)
 	return ingredients

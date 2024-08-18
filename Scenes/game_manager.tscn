@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvrjdtpd7bw4n"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_822bj"]
+[ext_resource type="Script" path="res://Scripts/game_timer.gd" id="2_jpp0i"]
+[ext_resource type="Script" path="res://Scripts/order_generator.gd" id="3_75lou"]
+[ext_resource type="Script" path="res://Scripts/order_manager.gd" id="4_e0hoh"]
+[ext_resource type="PackedScene" uid="uid://dpskv36p3tjfs" path="res://Scenes/mix_displayer.tscn" id="5_4xh1p"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("game_timer", "order_generator", "order_manager", "order_num_label")]
+script = ExtResource("1_822bj")
+game_timer = NodePath("GameTimer")
+order_generator = NodePath("OrderGenerator")
+order_manager = NodePath("OrderManager")
+order_num_label = NodePath("OrderNumLabel")
+
+[node name="GameTimer" type="Node2D" parent="."]
+position = Vector2(151, 82)
+script = ExtResource("2_jpp0i")
+
+[node name="Timer" type="Timer" parent="GameTimer"]
+one_shot = true
+
+[node name="Label" type="Label" parent="GameTimer"]
+offset_right = 40.0
+offset_bottom = 25.0
+
+[node name="OrderNumLabel" type="Label" parent="."]
+offset_left = 149.0
+offset_top = 114.0
+offset_right = 189.0
+offset_bottom = 139.0
+
+[node name="OrderGenerator" type="Node" parent="." node_paths=PackedStringArray("root_node")]
+script = ExtResource("3_75lou")
+root_node = NodePath("")
+
+[node name="OrderManager" type="Node" parent="." node_paths=PackedStringArray("root_node", "mix_displayer1", "mix_displayer2")]
+script = ExtResource("4_e0hoh")
+root_node = NodePath("")
+mix_displayer1 = NodePath("OrderDisplay1")
+mix_displayer2 = NodePath("OrderDisplay2")
+
+[node name="OrderDisplay1" parent="OrderManager" instance=ExtResource("5_4xh1p")]
+position = Vector2(152, 15)
+
+[node name="OrderDisplay2" parent="OrderManager" instance=ExtResource("5_4xh1p")]
+position = Vector2(194, 15)
+
+[connection signal="timeout" from="GameTimer/Timer" to="." method="_on_timer_end"]
+[connection signal="order_completed" from="OrderManager" to="." method="_on_order_completed"]

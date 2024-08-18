@@ -19,17 +19,16 @@ func _process(delta: float) -> void:
 
 
 func connect_all_ingredients():
-	var buttons = []
-	for child in root_node.get_children():
+	var buttons: Array[IngredientButton] = []
+	for child in root_node.find_children("*", "IngredientButton"):
 		if child is IngredientButton:
 			buttons.append(child)
 	# manually connect their signal to us, if it's not already done
 	for button in buttons :
-		var ing_button = button as IngredientButton
-		if not ing_button in _connected_buttons:
-			ing_button.connect(ing_button.added_ingredient.get_name(), add_ingredient)
-			ing_button.connect(ing_button.removed_ingredient.get_name(), remove_ingredient)
-			_connected_buttons.append(ing_button)
+		if not button in _connected_buttons:
+			button.connect(button.added_ingredient.get_name(), add_ingredient)
+			button.connect(button.removed_ingredient.get_name(), remove_ingredient)
+			_connected_buttons.append(button)
 
 
 func add_ingredient(ingredient: Ingredient):

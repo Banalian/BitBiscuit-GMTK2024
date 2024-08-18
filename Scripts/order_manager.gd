@@ -34,6 +34,7 @@ func setup_displayers():
 
 
 func check_orders_state():
+	print("checking order state")
 	_checking = true
 	var correct_mix:= 0
 	for order in _current_order:
@@ -52,7 +53,7 @@ func clear_client_tiles():
 		client_tile.erase_mix()
 
 
-func _on_mix_changed(mix: Mix):
+func _on_mix_changed(_mix: Mix):
 	if not _checking:
 		# Prevents a stack overflow because somehow only sometimes we end up in a stack overflow when checking and clearing stuff
 		check_orders_state()
@@ -65,6 +66,5 @@ func _connect_client_tile_signal():
 
 func _get_all_client_tiles():
 	_client_tiles = []
-	for child in root_node.get_children():
-		if child is ClientTile:
-			_client_tiles.append(child as ClientTile)
+	for child in root_node.find_children("*", "ClientTile"):
+		_client_tiles.append(child)
