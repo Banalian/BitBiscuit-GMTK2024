@@ -127,6 +127,7 @@ func _on_end_order_timer_timeout() -> void:
 	if _current_round == 0 and _completed_order >= rounds[0].order_quota:
 		# Special case to stop the tuto round early
 		end_round()
+		return
 	var mixes = order_generator.generate_mixes()
 	_tmp_order = mixes
 	start_order_timer.start(client.start_client(mixes))
