@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://dhe38oi674gn"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://dhe38oi674gn"]
 
 [ext_resource type="Texture2D" uid="uid://cbetxedjd7skx" path="res://Assets/Textures/Ingredients/Stations/Beer.png" id="1_5vgqq"]
 [ext_resource type="Texture2D" uid="uid://dpbsvgmvame68" path="res://Assets/Textures/Ingredients/Bases/Beer.png" id="1_ocags"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="1_yy7cm"]
+[ext_resource type="AudioStream" uid="uid://ckeyhv7dl005a" path="res://Assets/Sounds/Beer.mp3" id="4_bktgx"]
 
 [resource]
 script = ExtResource("1_yy7cm")
@@ -11,3 +12,4 @@ ingredient_type = 1
 ingredient_name = "Beer"
 ingredient_texture = ExtResource("1_ocags")
 ingredient_station = ExtResource("1_5vgqq")
+station_sound = ExtResource("4_bktgx")

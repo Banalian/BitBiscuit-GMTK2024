@@ -493,6 +493,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("23_nlf32")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="ViewTop/DialogueBackground/MarginContainer/VBoxContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="failed_state" from="GameManager" to="CameraBase/CanvasLayer/FailedStateHandler" method="_on_game_manager_failed_state"]

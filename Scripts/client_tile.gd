@@ -8,6 +8,8 @@ signal client_mix_changed(new_client_mix)
 
 var client_mix: Mix = null
 
+@onready var main = $"../.."
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +27,9 @@ func try_give_mix():
 		client_mix_changed.emit(client_mix)
 		print("client is now empty")
 	# else, couldn't give a mix because the holder already has one, do nothing
+		main.audio_stream.stream = load("res://Assets/Sounds/DishPlace.mp3")
+		main.audio_stream.pitch_scale = 0.8 + (randi() % 11) / 25.0
+		main.audio_stream.play()
 
 
 func try_take_mix():
@@ -34,6 +39,9 @@ func try_take_mix():
 		client_mix_changed.emit(client_mix)
 		print("client took the mix")
 	# else, couldn't extract because the mix is invalid, do nothing
+		main.audio_stream.stream = load("res://Assets/Sounds/DishPlace.mp3")
+		main.audio_stream.pitch_scale = 0.8 + (randi() % 11) / 25.0
+		main.audio_stream.play()
 
 
 func erase_mix():

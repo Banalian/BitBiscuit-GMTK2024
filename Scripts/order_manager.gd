@@ -11,7 +11,7 @@ var _current_order: Array[Mix] = []
 var _client_tiles: Array[ClientTile] = []
 var _checking:= false
 
-@onready var main = get_parent().get_parent()
+@onready var main = $"../.."
 
 func _ready() -> void:
 	_get_all_client_tiles()

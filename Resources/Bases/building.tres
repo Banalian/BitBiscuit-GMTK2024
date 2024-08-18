@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://bq5v7b0lj8ggw"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bq5v7b0lj8ggw"]
 
 [ext_resource type="Texture2D" uid="uid://bv6lv56dhb5xv" path="res://Assets/Textures/Ingredients/Bases/Building.png" id="1_ekmqg"]
 [ext_resource type="Texture2D" uid="uid://bm0olw22sp6yl" path="res://Assets/Textures/Ingredients/Stations/Building.png" id="1_of4da"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_0ldda"]
+[ext_resource type="AudioStream" uid="uid://b0c8vheb57l4n" path="res://Assets/Sounds/Building.mp3" id="4_0j2xs"]
 
 [resource]
 script = ExtResource("2_0ldda")
@@ -11,3 +12,4 @@ ingredient_type = 1
 ingredient_name = "Building"
 ingredient_texture = ExtResource("1_ekmqg")
 ingredient_station = ExtResource("1_of4da")
+station_sound = ExtResource("4_0j2xs")

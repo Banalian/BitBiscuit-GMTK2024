@@ -8,6 +8,9 @@ signal holding_mix_changed(new_holding_mix)
 var holding_mix: Mix = null
 var _connected_buttons:= []
 
+@onready var main = $".."
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect_all_ingredients()
@@ -39,6 +42,9 @@ func add_ingredient(ingredient: Ingredient):
 		holding_mix = tmp_mix
 		holding_mix_changed.emit(holding_mix)
 		print("Added " + ingredient.ingredient_name + " To the holder")
+		main.audio_stream.stream = ingredient.station_sound
+		main.audio_stream.pitch_scale = 0.8 + (randi() % 11) / 25.0
+		main.audio_stream.play()
 
 
 func remove_ingredient(ingredient: Ingredient):

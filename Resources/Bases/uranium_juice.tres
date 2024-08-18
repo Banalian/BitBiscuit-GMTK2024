@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://d1jvhuxivkcoe"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://d1jvhuxivkcoe"]
 
 [ext_resource type="Texture2D" uid="uid://cqlx00o8r5c51" path="res://Assets/Textures/Ingredients/Bases/UraniumJuice.png" id="1_qhyq7"]
 [ext_resource type="Texture2D" uid="uid://bhr7h2q74wvou" path="res://Assets/Textures/Ingredients/Stations/UraniumJuice.png" id="1_tk3fg"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_fl33i"]
+[ext_resource type="AudioStream" uid="uid://cmuoj10w10s7d" path="res://Assets/Sounds/UraniumJuice.mp3" id="4_606q6"]
 
 [resource]
 script = ExtResource("2_fl33i")
@@ -11,3 +12,4 @@ ingredient_type = 1
 ingredient_name = "Uranium Juice"
 ingredient_texture = ExtResource("1_qhyq7")
 ingredient_station = ExtResource("1_tk3fg")
+station_sound = ExtResource("4_606q6")

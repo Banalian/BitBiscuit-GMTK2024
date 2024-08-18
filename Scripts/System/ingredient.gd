@@ -7,4 +7,5 @@ class_name Ingredient
 @export var ingredient_name:= "Invalid"
 @export var ingredient_texture: Texture2D
 @export var ingredient_station: Texture2D
+@export var station_sound: AudioStream
 @export var ingredient_scene: PackedScene

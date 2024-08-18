@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://c8amr3r5lgprb"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://c8amr3r5lgprb"]
 
 [ext_resource type="Texture2D" uid="uid://iwwgqwsm8bc" path="res://Assets/Textures/Ingredients/Containers/Bowl.png" id="1_ci4ky"]
 [ext_resource type="Texture2D" uid="uid://8sdpxlibj6ft" path="res://Assets/Textures/Ingredients/Stations/Bowl.png" id="1_e5k16"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_ljm1d"]
+[ext_resource type="AudioStream" uid="uid://dgnk2o3f8hys1" path="res://Assets/Sounds/Dish.mp3" id="4_ipn36"]
 
 [resource]
 script = ExtResource("2_ljm1d")
@@ -11,3 +12,4 @@ ingredient_type = 0
 ingredient_name = "Bowl"
 ingredient_texture = ExtResource("1_ci4ky")
 ingredient_station = ExtResource("1_e5k16")
+station_sound = ExtResource("4_ipn36")

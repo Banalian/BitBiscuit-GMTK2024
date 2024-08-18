@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://bsd7n5rfbiqst"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://bsd7n5rfbiqst"]
 
 [ext_resource type="Texture2D" uid="uid://cpxftwel4doou" path="res://Assets/Textures/Ingredients/Stations/Forest.png" id="1_8bhxk"]
 [ext_resource type="Texture2D" uid="uid://c156kuuxv4pdq" path="res://Assets/Textures/Ingredients/Bases/Forest.png" id="1_8ywuo"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_1ugkl"]
+[ext_resource type="AudioStream" uid="uid://y24mlilnq1ld" path="res://Assets/Sounds/Forest.mp3" id="4_30jtk"]
 
 [resource]
 script = ExtResource("2_1ugkl")
@@ -11,3 +12,4 @@ ingredient_type = 1
 ingredient_name = "Forest"
 ingredient_texture = ExtResource("1_8ywuo")
 ingredient_station = ExtResource("1_8bhxk")
+station_sound = ExtResource("4_30jtk")

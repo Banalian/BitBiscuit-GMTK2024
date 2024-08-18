@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://r1eu2ey3046m"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=6 format=3 uid="uid://r1eu2ey3046m"]
 
 [ext_resource type="PackedScene" uid="uid://dojqyjq56sfjh" path="res://Assets/Textures/Ingredients/Additionals/desert.tscn" id="1_s4m83"]
 [ext_resource type="Texture2D" uid="uid://cfg8hswy00h8x" path="res://Assets/Textures/Ingredients/Stations/Desert.png" id="2_kvun7"]
 [ext_resource type="Texture2D" uid="uid://dk18rqqoqwn2q" path="res://Assets/Textures/UI/ItemEmpty.png" id="2_q1f13"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="3_1bnxf"]
+[ext_resource type="AudioStream" uid="uid://hsj8xwnqbeo0" path="res://Assets/Sounds/Desert.mp3" id="5_30fxh"]
 
 [resource]
 script = ExtResource("3_1bnxf")
@@ -12,4 +13,5 @@ ingredient_type = 2
 ingredient_name = "Desert"
 ingredient_texture = ExtResource("2_q1f13")
 ingredient_station = ExtResource("2_kvun7")
+station_sound = ExtResource("5_30fxh")
 ingredient_scene = ExtResource("1_s4m83")

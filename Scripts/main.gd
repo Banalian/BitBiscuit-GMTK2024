@@ -7,6 +7,7 @@ var view_shift := false
 @onready var camera = $CameraBase/Camera2D
 @onready var client = $ViewTop/Client
 @onready var dialogue = $ViewTop/DialogueBackground/MarginContainer/VBoxContainer/DialogueText
+@onready var audio_stream = $AudioStreamPlayer
 
 var dialogue_tween
 var client_tween

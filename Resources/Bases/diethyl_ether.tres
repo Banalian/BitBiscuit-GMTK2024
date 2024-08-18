@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://p4b25y6w3jws"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=5 format=3 uid="uid://p4b25y6w3jws"]
 
 [ext_resource type="Texture2D" uid="uid://bsl6vew4itylr" path="res://Assets/Textures/Ingredients/Bases/DiethylEther.png" id="1_fss71"]
 [ext_resource type="Texture2D" uid="uid://dm44tvlrt64uk" path="res://Assets/Textures/Ingredients/Stations/DiethylEther.png" id="1_vlnvj"]
 [ext_resource type="Script" path="res://Scripts/System/ingredient.gd" id="2_7yjg3"]
+[ext_resource type="AudioStream" uid="uid://bjngad1jhrrdd" path="res://Assets/Sounds/DiethylEther.mp3" id="4_vm8qp"]
 
 [resource]
 script = ExtResource("2_7yjg3")
@@ -11,3 +12,4 @@ ingredient_type = 1
 ingredient_name = "Diethyl Ether"
 ingredient_texture = ExtResource("1_fss71")
 ingredient_station = ExtResource("1_vlnvj")
+station_sound = ExtResource("4_vm8qp")
