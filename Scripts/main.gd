@@ -9,6 +9,7 @@ var view_shift := false
 @onready var dialogue = $ViewTop/DialogueBackground/MarginContainer/VBoxContainer/DialogueText
 @onready var next_dialogue_timer = $ViewTop/NextDialogueTimer
 @onready var audio_stream = $AudioStreamPlayer
+@onready var audio_stream_game = $AudioStreamPlayer2
 
 var dialogue_tween
 var client_tween

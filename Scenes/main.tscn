@@ -478,6 +478,9 @@ texture = ExtResource("23_nlf32")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+
 [connection signal="timeout" from="ViewTop/NextDialogueTimer" to="." method="_on_next_dialogue_timer_timeout"]
 [connection signal="pressed" from="ViewTop/DialogueBackground/MarginContainer/VBoxContainer/ViewButton" to="." method="_on_view_button_pressed"]
 [connection signal="pressed" from="ViewBottom/MarginContainer/ViewButton" to="." method="_on_view_button_pressed"]

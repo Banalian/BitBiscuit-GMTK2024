@@ -14,6 +14,9 @@ signal ended_round(round: Round, round_number: int)
 @onready var order_num_label: RichTextLabel = $CanvasLayer/OrderNumLabel
 @export var client: Main
 
+@onready var main = $".."
+
+
 class Round:
 	# Allowed time in second to complete the minimum quota for the round
 	var allowed_time: float
@@ -74,7 +77,14 @@ func end_round():
 	order_manager.clear_order()
 	if _completed_order < rounds[_current_round].order_quota:
 		print("not enough orders")
+		main.audio_stream_game.stream = load("res://Assets/Sounds/LoseFanfare.mp3")
+		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
+		main.audio_stream_game.play()
 		failed_state.emit(rounds[_current_round], _current_round, _total_completed_order)
+	else:
+		main.audio_stream_game.stream = load("res://Assets/Sounds/WinFanfare.mp3")
+		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
+		main.audio_stream_game.play()
 		return
 	_current_round += 1
 	if rounds.size() < _current_round:
@@ -99,6 +109,9 @@ func _update_label():
 		order_num_label.text = "Quota Achieved!\nBonus order(s): " + str(_completed_order - rounds[_current_round].order_quota)
 
 func _on_order_completed():
+	main.audio_stream_game.stream = load("res://Assets/Sounds/CompletedOrder.mp3")
+	main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
+	main.audio_stream_game.play()
 	_completed_order += 1
 	_total_completed_order += 1
 	order_manager.clear_order()
