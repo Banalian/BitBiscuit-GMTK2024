@@ -1,18 +1,14 @@
 class_name IngredientButton
-extends Node
+extends Button
 
 signal added_ingredient (ingredient: Ingredient)
 signal removed_ingredient (ingredient: Ingredient)
 
 @export var ingredient_res: Ingredient
-@export var button: Button
 
 func _ready() -> void:
-	button.text = ingredient_res.ingredient_name
-	button.icon = ingredient_res.ingredient_station
-	if ingredient_res.ingredient_scene:
-		var scene = ingredient_res.ingredient_scene.instantiate() as Node2D
-		add_child(scene)
+	text = ingredient_res.ingredient_name
+	icon = ingredient_res.ingredient_station
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,4 +34,4 @@ func _on_Button_gui_input(event):
 
 
 func toggle_ingredient_button_state():
-	button.disabled = not button.disabled
+	disabled = not disabled

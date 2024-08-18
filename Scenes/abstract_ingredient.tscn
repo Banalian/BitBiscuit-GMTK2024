@@ -3,11 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://clusqb2osq0vk" path="res://Assets/Textures/UI/ItemPlaceholder.png" id="1_7heh8"]
 [ext_resource type="Script" path="res://Scripts/ingredient_button.gd" id="1_oeb5v"]
 
-[node name="Node" type="Node2D" node_paths=PackedStringArray("button")]
-script = ExtResource("1_oeb5v")
-button = NodePath("Button")
-
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -23,5 +19,4 @@ text = "Invalid"
 icon = ExtResource("1_7heh8")
 icon_alignment = 1
 vertical_icon_alignment = 0
-
-[connection signal="gui_input" from="Button" to="." method="_on_Button_gui_input"]
+script = ExtResource("1_oeb5v")
