@@ -34,14 +34,16 @@ script = ExtResource("3_75lou")
 
 [node name="OrderManager" type="Node" parent="." node_paths=PackedStringArray("mix_displayer1", "mix_displayer2")]
 script = ExtResource("4_e0hoh")
-mix_displayer1 = NodePath("OrderDisplay1")
-mix_displayer2 = NodePath("OrderDisplay2")
+mix_displayer1 = NodePath("CanvasLayer/OrderDisplay1")
+mix_displayer2 = NodePath("CanvasLayer/OrderDisplay2")
 
-[node name="OrderDisplay1" parent="OrderManager" instance=ExtResource("5_4xh1p")]
-position = Vector2(152, 15)
+[node name="CanvasLayer" type="CanvasLayer" parent="OrderManager"]
 
-[node name="OrderDisplay2" parent="OrderManager" instance=ExtResource("5_4xh1p")]
-position = Vector2(194, 15)
+[node name="OrderDisplay1" parent="OrderManager/CanvasLayer" instance=ExtResource("5_4xh1p")]
+position = Vector2(20, 150)
+
+[node name="OrderDisplay2" parent="OrderManager/CanvasLayer" instance=ExtResource("5_4xh1p")]
+position = Vector2(50, 150)
 
 [node name="EndRoundTimer" type="Timer" parent="."]
 one_shot = true

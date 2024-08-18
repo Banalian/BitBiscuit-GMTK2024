@@ -458,12 +458,6 @@ root_node = NodePath("../..")
 [node name="OrderManager" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")
 
-[node name="OrderDisplay1" parent="GameManager/OrderManager" index="0"]
-position = Vector2(200, 160)
-
-[node name="OrderDisplay2" parent="GameManager/OrderManager" index="1"]
-position = Vector2(230, 160)
-
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("22_irysh")]
 position = Vector2(285, 330)
 root_node = NodePath("..")

@@ -38,9 +38,9 @@ var _tmp_order: Array[Mix]
 
 func _init() -> void:
 	# UGLY, but do the data init for the rounds here
-	var testRound = Round.new()
-	var round1 = Round.new(60, 5)
-	var round2 = Round.new(80, 10)
+	var testRound = Round.new(120.0)
+	var round1 = Round.new(80.0, 5)
+	var round2 = Round.new(80.0, 10)
 	rounds.append(testRound)
 	rounds.append(round1)
 	rounds.append(round2)
@@ -68,6 +68,9 @@ func start_round(new_round: Round):
 func end_round():
 	ended_round.emit(rounds[_current_round], _completed_order)
 	_in_round = false
+	if client.view_shift:
+			client.view_shift = false
+			client.camera_base.position.y = 0.0
 	order_manager.clear_order()
 	if _completed_order < rounds[_current_round].order_quota:
 		print("not enough orders")
