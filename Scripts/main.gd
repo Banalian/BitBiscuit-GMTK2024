@@ -62,7 +62,7 @@ func start_client(mixes: Array[Mix]) -> float :
 	_dialogue_list.append(client.get_dialogue(1, mixes))
 	set_dialogue(client.get_dialogue(0))
 	next_dialogue_timer.stop()
-	next_dialogue_timer.start()
+	next_dialogue_timer.start(1.0)
 	return 1.0 # only an estimation
 
 # returns the amount of time the whole end sequence will take
@@ -74,8 +74,8 @@ func end_client() -> float :
 	_dialogue_list.append(client.get_dialogue(3))
 	set_dialogue(_dialogue_list[_current_dialogue])
 	next_dialogue_timer.stop()
-	next_dialogue_timer.start()
-	return 2.0
+	next_dialogue_timer.start(2.0)
+	return 3.0
 
 
 func _on_next_dialogue_timer_timeout() -> void:

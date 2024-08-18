@@ -102,11 +102,11 @@ func get_dialogue(type: int, order	: Array[Mix] = [null, null]):
 			#text += order[1].to_order_string(true if personality == "hyper" else false)
 			match personality:
 				"bored":
-					text += order[0].to_order_string(1)
+					text += order[1].to_order_string(1)
 				"hyper":
-					text += order[0].to_order_string(2)
+					text += order[1].to_order_string(2)
 				_:
-					text += order[0].to_order_string(0)
+					text += order[1].to_order_string(0)
 		text += dialogues[personality][type][variation][2]
 		return text
 	else:
