@@ -21,4 +21,4 @@ func _on_button_quit_pressed() -> void:
 
 
 func _on_button_gmtk_pressed() -> void:
-	OS.shell_open("https://example.com")
+	OS.shell_open("https://banalian.itch.io/bar-of-demanding-gods")
