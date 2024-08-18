@@ -60,6 +60,7 @@ func _process(_delta: float) -> void:
 func start_round(new_round: Round):
 	_completed_order = 0
 	_in_round = true
+	game_timer.stop_timer()
 	game_timer.start_timer(new_round.allowed_time)
 	var mixes = order_generator.generate_mixes()
 	_tmp_order = mixes
@@ -85,7 +86,6 @@ func end_round():
 		main.audio_stream_game.stream = load("res://Assets/Sounds/WinFanfare.mp3")
 		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
 		main.audio_stream_game.play()
-		return
 	_current_round += 1
 	if rounds.size() < _current_round:
 		# Do something about not having enough round
@@ -124,6 +124,9 @@ func _on_timer_end():
 
 # Start a new order in the round
 func _on_end_order_timer_timeout() -> void:
+	if _current_round == 0 and _completed_order >= rounds[0].order_quota:
+		# Special case to stop the tuto round early
+		end_round()
 	var mixes = order_generator.generate_mixes()
 	_tmp_order = mixes
 	start_order_timer.start(client.start_client(mixes))
