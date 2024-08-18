@@ -82,6 +82,7 @@ func end_round():
 		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
 		main.audio_stream_game.play()
 		failed_state.emit(rounds[_current_round], _current_round, _total_completed_order)
+		return
 	else:
 		main.audio_stream_game.stream = load("res://Assets/Sounds/WinFanfare.mp3")
 		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
@@ -103,6 +104,8 @@ func generate_additional_round():
 
 
 func _update_label():
+	if _current_round >= rounds.size():
+		return
 	if _completed_order < rounds[_current_round].order_quota:
 		order_num_label.text = "Quota: " + str(rounds[_current_round].order_quota - _completed_order) + " order(s) left"
 	else:
