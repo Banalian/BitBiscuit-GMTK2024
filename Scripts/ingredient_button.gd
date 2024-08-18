@@ -7,7 +7,7 @@ signal removed_ingredient (ingredient: Ingredient)
 @export var ingredient_res: Ingredient
 
 func _ready() -> void:
-	text = ingredient_res.ingredient_name
+	tooltip_text = ingredient_res.ingredient_name
 	icon = ingredient_res.ingredient_station
 
 
