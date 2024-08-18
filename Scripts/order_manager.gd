@@ -11,6 +11,8 @@ var _current_order: Array[Mix] = []
 var _client_tiles: Array[ClientTile] = []
 var _checking:= false
 
+@onready var main = get_parent().get_parent()
+
 func _ready() -> void:
 	_get_all_client_tiles()
 	_connect_client_tile_signal()
@@ -45,6 +47,9 @@ func check_orders_state():
 	if correct_mix == _current_order.size():
 		clear_client_tiles()
 		order_completed.emit()
+		if main.view_shift:
+			main.view_shift = false
+			main.camera_base.position.y = 0.0
 	_checking = false
 
 

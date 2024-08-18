@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://djedvt6g0ujyd"]
+[gd_scene load_steps=7 format=3 uid="uid://djedvt6g0ujyd"]
 
 [ext_resource type="Script" path="res://Scripts/client.gd" id="1_0d2x7"]
 [ext_resource type="Texture2D" uid="uid://lqc5gbdnph1v" path="res://Assets/Textures/Client/ClientBase.png" id="1_w2dei"]
+[ext_resource type="Texture2D" uid="uid://dggqocyidsqc8" path="res://Assets/Textures/Client/ClientBack.png" id="3_kvufb"]
+[ext_resource type="Texture2D" uid="uid://us4a8jwgvh82" path="res://Assets/Textures/Client/ClientEyes.png" id="3_utjxw"]
+[ext_resource type="Texture2D" uid="uid://ci48dw52et2am" path="res://Assets/Textures/Client/ClientMouths.png" id="4_ldvew"]
+[ext_resource type="Texture2D" uid="uid://b1sbgibfixv0k" path="res://Assets/Textures/Client/ClientHats.png" id="6_ex1hn"]
 
 [node name="Client" type="Node2D"]
 script = ExtResource("1_0d2x7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("1_w2dei")
+
+[node name="Back" type="Sprite2D" parent="."]
+texture = ExtResource("3_kvufb")
+hframes = 8
+
+[node name="Eyes" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("3_utjxw")
+hframes = 8
+
+[node name="Mouth" type="Sprite2D" parent="."]
+texture = ExtResource("4_ldvew")
+hframes = 8
+
+[node name="Hat" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("6_ex1hn")
+hframes = 8

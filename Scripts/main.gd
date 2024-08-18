@@ -6,7 +6,7 @@ var view_shift := false
 @onready var camera_base = $CameraBase
 @onready var camera = $CameraBase/Camera2D
 @onready var client = $ViewTop/Client
-@onready var dialogue = $ViewTop/DialogueBackground/DialogueText
+@onready var dialogue = $ViewTop/DialogueBackground/MarginContainer/VBoxContainer/DialogueText
 
 var dialogue_tween
 var client_tween
@@ -28,7 +28,7 @@ func set_dialogue(text) -> void:
 	dialogue.visible_ratio = 0.0
 	dialogue.text = str("[center]", text)
 	dialogue_tween = create_tween()
-	dialogue_tween.tween_property(dialogue, "visible_ratio", 1.0, dialogue.get_parsed_text().length() / 50.0)
+	dialogue_tween.tween_property(dialogue, "visible_ratio", 1.0, 0.5)
 
 
 func add_client() -> void:
@@ -38,24 +38,25 @@ func add_client() -> void:
 	var types = [Tween.TRANS_ELASTIC, Tween.TRANS_BACK, Tween.TRANS_QUART, Tween.TRANS_CUBIC, Tween.TRANS_LINEAR]
 	client.tween_type = types.pick_random()
 	var client_tween = create_tween().set_trans(client.tween_type).set_ease(Tween.EASE_OUT)
-	client_tween.tween_property(client, "position", Vector2(89.0, 49.0), 1.0)
+	client_tween.tween_property(client, "position", Vector2(89.0, 49.0), 0.8)
 
 
 func remove_client() -> void:
 	if client_tween:
 		client_tween.kill()
 	var client_tween = create_tween().set_trans(client.tween_type).set_ease(Tween.EASE_IN)
-	client_tween.tween_property(client, "position", Vector2(-160.0, 49.0), 1.0)
+	client_tween.tween_property(client, "position", Vector2(-160.0, 49.0), 0.8)
 
 
 func start_client(mixes: Array[Mix]):
 	add_client()
-	set_dialogue("Henlo")
+	client.randomize()
+	set_dialogue(client.get_dialogue(0))
 
 # returns the amount of time the whole end sequence will take
 func end_client() -> float :
 	remove_client()
-	set_dialogue("ByeBye")
+	set_dialogue(client.get_dialogue(3))
 	return 1.0
 
 
