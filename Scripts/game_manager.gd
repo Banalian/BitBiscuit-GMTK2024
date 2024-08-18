@@ -88,7 +88,7 @@ func end_round():
 		main.audio_stream_game.pitch_scale = 0.8 + (randi() % 11) / 25.0
 		main.audio_stream_game.play()
 	_current_round += 1
-	if rounds.size() < _current_round:
+	if rounds.size() <= _current_round:
 		# Do something about not having enough round
 		generate_additional_round()
 	# Start end round timer
