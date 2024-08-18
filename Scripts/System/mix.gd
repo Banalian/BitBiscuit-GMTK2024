@@ -4,7 +4,7 @@ class_name Mix
 var _content: Dictionary = {}
 var _type: Constants.MixType
 
-var _possible_link = [" With a bit of ", " With a sprinkle of "]
+var _possible_link = [" with a bit of ", " with a sprinkle of ", " with "]
 
 # Returns true if the ingredient was accepted, false otherwise
 func add(ingredient: Ingredient):
@@ -77,7 +77,7 @@ func to_order_string(casing := 0):
 	if base:
 		final += base.ingredient_name
 	if additional:
-		final += _possible_link[(randi() % _possible_link.size())] + additional.ingredient_name
+		final += _possible_link.pick_random() + additional.ingredient_name
 	match casing:
 		0:
 			return final
