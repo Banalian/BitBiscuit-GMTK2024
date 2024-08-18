@@ -36,6 +36,11 @@ func try_take_mix():
 	# else, couldn't extract because the mix is invalid, do nothing
 
 
+func erase_mix():
+	client_mix = null
+	client_mix_changed.emit(client_mix)
+
+
 func _on_client_tile_pressed():
 	# when the client tile is pressed
 	if client_mix:

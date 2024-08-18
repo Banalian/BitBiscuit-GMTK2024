@@ -24,23 +24,46 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Holder" parent="." node_paths=PackedStringArray("root_node") instance=ExtResource("4_uoe76")]
-position = Vector2(212, 15)
+position = Vector2(114, 146)
 root_node = NodePath("..")
 
 [node name="ClientTile" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("5_mdyf4")]
 layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 248.0
 offset_top = 1.0
 offset_right = 315.0
 offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
+holder = NodePath("../Holder")
+
+[node name="ClientTile2" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("5_mdyf4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 248.0
+offset_top = 41.0
+offset_right = 315.0
+offset_bottom = 72.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Client 2"
 holder = NodePath("../Holder")
 
 [node name="Trash" parent="." node_paths=PackedStringArray("holder") instance=ExtResource("6_nvdae")]
 layout_mode = 0
-offset_left = 247.0
-offset_top = 35.0
-offset_right = 314.0
-offset_bottom = 66.0
+offset_left = -17.0
+offset_top = 147.0
+offset_right = 50.0
+offset_bottom = 178.0
 holder = NodePath("../Holder")
 
 [node name="Beer" parent="." instance=ExtResource("1_ku2gi")]
@@ -63,28 +86,45 @@ ingredient_res = ExtResource("7_he073")
 position = Vector2(70, 147)
 ingredient_res = ExtResource("8_lx8mu")
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("game_timer", "order_generator", "order_manager", "order_num_label")]
 script = ExtResource("10_11bek")
+game_timer = NodePath("GameTimer")
+order_generator = NodePath("OrderGenerator")
+order_manager = NodePath("OrderManager")
+order_num_label = NodePath("OrderNumLabel")
 
 [node name="GameTimer" type="Node2D" parent="GameManager"]
+position = Vector2(151, 82)
 script = ExtResource("12_5d31o")
 
 [node name="Timer" type="Timer" parent="GameManager/GameTimer"]
+one_shot = true
 
 [node name="Label" type="Label" parent="GameManager/GameTimer"]
 offset_right = 40.0
 offset_bottom = 25.0
 
-[node name="OrderGenerator" type="Node" parent="GameManager" node_paths=PackedStringArray("root_node", "mix_displayer")]
+[node name="OrderNumLabel" type="Label" parent="GameManager"]
+offset_left = 149.0
+offset_top = 114.0
+offset_right = 189.0
+offset_bottom = 139.0
+
+[node name="OrderGenerator" type="Node" parent="GameManager" node_paths=PackedStringArray("root_node")]
 script = ExtResource("10_5gpj7")
 root_node = NodePath("../..")
-mix_displayer = NodePath("MixDisplayer")
 
-[node name="MixDisplayer" parent="GameManager/OrderGenerator" instance=ExtResource("11_2afnp")]
+[node name="OrderManager" type="Node" parent="GameManager" node_paths=PackedStringArray("root_node", "mix_displayer1", "mix_displayer2")]
+script = ExtResource("14_fw2fn")
+root_node = NodePath("../..")
+mix_displayer1 = NodePath("OrderDisplay1")
+mix_displayer2 = NodePath("OrderDisplay2")
+
+[node name="OrderDisplay1" parent="GameManager/OrderManager" instance=ExtResource("11_2afnp")]
 position = Vector2(152, 15)
 
-[node name="OrderManager" type="Node" parent="GameManager"]
-script = ExtResource("14_fw2fn")
+[node name="OrderDisplay2" parent="GameManager/OrderManager" instance=ExtResource("11_2afnp")]
+position = Vector2(194, 15)
 
-[connection signal="timeout" from="GameManager/GameTimer/Timer" to="GameManager" method="_on_round_end"]
+[connection signal="timeout" from="GameManager/GameTimer/Timer" to="GameManager" method="_on_timer_end"]
 [connection signal="order_completed" from="GameManager/OrderManager" to="GameManager" method="_on_order_completed"]

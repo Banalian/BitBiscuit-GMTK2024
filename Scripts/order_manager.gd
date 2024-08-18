@@ -4,9 +4,12 @@ extends Node
 signal order_completed
 
 @export var root_node: Node
+@export var mix_displayer1: MixDisplayer
+@export var mix_displayer2: MixDisplayer
 
 var _current_order: Array[Mix] = []
 var _client_tiles: Array[ClientTile] = []
+var _checking:= false
 
 func _ready() -> void:
 	_get_all_client_tiles()
@@ -14,23 +17,45 @@ func _ready() -> void:
 	pass
 
 
-func setup_order(mixes: Array):
+func setup_order(mixes: Array[Mix]):
+	clear_client_tiles()
 	_current_order = mixes
+	setup_displayers()
 	pass
 
 
+func setup_displayers():
+	mix_displayer1.clear_mix()
+	mix_displayer2.clear_mix()
+	if _current_order.size() >= 1 :
+		mix_displayer1.set_mix(_current_order[0])
+	if _current_order.size() >= 2 :
+		mix_displayer2.set_mix(_current_order[1])
+
+
 func check_orders_state():
-	var order_done:= true
+	_checking = true
+	var correct_mix:= 0
 	for order in _current_order:
 		for client_tile in _client_tiles:
 			var mix: Mix = client_tile.client_mix
-			if not mix or not mix.equals(order):
-				order_done = false
-	if order_done:
+			if mix and mix.equals(order):
+				correct_mix += 1
+	if correct_mix == _current_order.size():
+		clear_client_tiles()
 		order_completed.emit()
+	_checking = false
+
+
+func clear_client_tiles():
+	for client_tile in _client_tiles:
+		client_tile.erase_mix()
+
 
 func _on_mix_changed(mix: Mix):
-	check_orders_state()
+	if not _checking:
+		# Prevents a stack overflow because somehow only sometimes we end up in a stack overflow when checking and clearing stuff
+		check_orders_state()
 
 
 func _connect_client_tile_signal():

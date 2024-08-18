@@ -2,9 +2,6 @@ class_name GameTimer
 extends Node2D
 
 @export var base_time:= 60.0
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	start_timer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -55,5 +55,11 @@ func is_mix_empty():
 	and not _content.get_or_add(Constants.IngredientType.ADDITIONAL, null)
 
 
+func equals(other_mix: Mix):
+	return get_ingredient(Constants.IngredientType.CONTAINER) == other_mix.get_ingredient(Constants.IngredientType.CONTAINER)\
+	and get_ingredient(Constants.IngredientType.BASE) == other_mix.get_ingredient(Constants.IngredientType.BASE)\
+	and get_ingredient(Constants.IngredientType.ADDITIONAL) == other_mix.get_ingredient(Constants.IngredientType.ADDITIONAL)
+
+
 func clear():
 	_content = {}

@@ -18,6 +18,12 @@ func _enter_tree() -> void:
 	}
 
 
+func clear_mix():
+	clear_display(Constants.IngredientType.CONTAINER)
+	clear_display(Constants.IngredientType.BASE)
+	clear_display(Constants.IngredientType.ADDITIONAL)
+
+
 func set_mix(new_mix: Mix):
 	var tmp_container: Ingredient
 	var tmp_base: Ingredient
