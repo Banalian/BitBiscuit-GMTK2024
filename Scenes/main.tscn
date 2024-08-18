@@ -267,7 +267,6 @@ theme_override_constants/separation = 2
 [node name="Planet" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
 tooltip_text = "TestgÉ"
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w7bwh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_8skyu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_t38d7")
@@ -279,7 +278,6 @@ ingredient_res = ExtResource("4_ivq56")
 
 [node name="Pink horse" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w7bwh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_8skyu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_t38d7")
@@ -291,7 +289,6 @@ ingredient_res = ExtResource("5_l4kwx")
 
 [node name="Building" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w7bwh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_8skyu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_t38d7")
@@ -303,7 +300,6 @@ ingredient_res = ExtResource("6_4q3op")
 
 [node name="Forest" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w7bwh")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_8skyu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_t38d7")
@@ -329,7 +325,6 @@ theme_override_constants/separation = 0
 
 [node name="Cup" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -341,7 +336,6 @@ ingredient_res = ExtResource("9_yssrn")
 
 [node name="Bowl" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -353,7 +347,6 @@ ingredient_res = ExtResource("10_58a6e")
 
 [node name="Ants" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -365,7 +358,6 @@ ingredient_res = ExtResource("11_ladnu")
 
 [node name="Desert" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -391,7 +383,6 @@ theme_override_constants/separation = 0
 
 [node name="Molten Steel" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -403,7 +394,6 @@ ingredient_res = ExtResource("13_8lkky")
 
 [node name="Uranium Juice" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -415,7 +405,6 @@ ingredient_res = ExtResource("14_smvgv")
 
 [node name="Diethyl Ether" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -427,7 +416,6 @@ ingredient_res = ExtResource("15_be7sa")
 
 [node name="Beer" parent="ViewBottom/MarginContainer2/VBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_xeuuf")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cnrj1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_q4rmr")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_3pijy")
@@ -465,11 +453,15 @@ client = NodePath("..")
 [node name="GameTimer" parent="GameManager" index="0"]
 position = Vector2(253, 10)
 
+[node name="Label" parent="GameManager/GameTimer" index="1"]
+offset_right = 64.0
+offset_bottom = 28.0
+
 [node name="OrderNumLabel" parent="GameManager" index="1"]
 offset_left = 253.0
 offset_top = 40.0
-offset_right = 293.0
-offset_bottom = 65.0
+offset_right = 318.0
+offset_bottom = 108.0
 
 [node name="OrderGenerator" parent="GameManager" index="2" node_paths=PackedStringArray("root_node")]
 root_node = NodePath("../..")

@@ -46,11 +46,13 @@ vertical_alignment = 1
 [node name="BackToMenu" type="Button" parent="Panel/VBoxContainer"]
 z_index = 10
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Back to menu"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 z_index = 10
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Exit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]
